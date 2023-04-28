@@ -2,6 +2,8 @@ import React,{useState} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { Header } from './Header'
+import Select from "react-select";
+
 
 export const Postajob = () => {
 
@@ -23,53 +25,74 @@ export const Postajob = () => {
             navigate('/home')
         })
     }
-
-  return (
+    const options = [
+        { value: "React", label: "React" },
+        { value: "Vue", label: "Vue" },
+        { value: "Angular", label: "Angular" },
+        { value: "Java", label: "Java" }
+      ];
+      
+        const [skills, setSkills] = useState([]);
+      
+        const handleChange = (skills) => {
+          setSkills(skills || []);
+        };
+    
+        return (
 
         <div>            
             <Header/>
         
         <div className="container">
             <div className="row g-3">
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-3">
+                <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mb-3">
                     <label className="form-label">Job Position</label>
                     <input type="text" onChange={changeMyData} name="titleofrole"className="form-control" required />
                 </div>
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Company Name</label>
                     <input type="text" onChange={changeMyData} name="company" className="form-control" />
                 </div>
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Location</label>
                     <input type="text" onChange={changeMyData} name="place" className="form-control" />
                 </div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Job Type</button>
-                    <ul class="dropdown-menu">
-                        <li><button class="dropdown-item" type="button">Full-time</button></li>
-                        <li><button class="dropdown-item" type="button">Part-time</button></li>
-                        <li><button class="dropdown-item" type="button">Internship</button></li>
-                    </ul>
+                <div className="dropdown col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                    <label htmlFor="" className="form-label">Job Type</label>
+                    <select className="form-control" >
+                    <option class="dropdown-item" value="">Select..</option>
+                        <option class="dropdown-item" value="Full-time">Full-time</option>
+                        <option class="dropdown-item" value="Part-time">Part-time</option>
+                        <option class="dropdown-item" value="Internship">Internship</option>
+                    </select>
                 </div>
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                    <label htmlFor="" className="form-label">Field</label>
-                    <input type="text" onChange={changeMyData} name="field" className="form-control" />
+                <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                    <label htmlFor="" className="form-label">Skills</label>
+                    <form>
+                        <Select
+                        options={options}
+                        onChange={handleChange}
+                        value={skills}
+                        isMulti
+                        />
+                    </form>
+                    {/* <input type="text" onChange={changeMyData} name="field" className="form-control" /> */}
                 </div>
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Company Email</label>
                     <input type="text" onChange={changeMyData} name="email" className="form-control" />
                 </div>
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Experience</label>
                     <input type="text" onChange={changeMyData} name="experience" className="form-control" />
                 </div>
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Salary Package</label>
                     <input type="text" onChange={changeMyData} name="salary" className="form-control" />
                 </div>
                 <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                     <label htmlFor="" className="form-label">Job Description</label>
-                    <input type="text" onChange={changeMyData} name="description" className="form-control" />
+                    <textarea  onChange={changeMyData} name="description" className="form-control" />
                 </div>
                 <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                     <button  className="btn btn-success" onClick={post}>Submit</button>

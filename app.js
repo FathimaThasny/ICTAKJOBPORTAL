@@ -4,6 +4,7 @@ const bodyparser = require('body-parser')
 const { employeeModel } = require('./model/employee')
 const { facultyModel } = require('./model/faculty')
 const { jobModel } = require('./model/jobpost')
+const {alumniAddModel} = require('./model/alumniAddModel')
 
 const app = express()
 
@@ -29,7 +30,7 @@ app.post('/api/addemployee', async(req,res)=>{
 
     let data = new employeeModel(req.body)
     data.save()
-    res.json({status : "Added One Employee"})
+    res.json({status : "Registration Successfull. Please wait for the Conformation From Admin"})
 
 })
 
@@ -60,6 +61,24 @@ app.post('/api/deleteemployee', async(req,res)=>{
 
 })
 
+
+//----------view employer conformation--------
+app.post('/api/pendingemployer',async(req, res)=>{
+
+    let data = await employeeModel.find()
+    console.log("first")
+    let newarray = data.filter(item=> item.confirmed===false)
+    res.json(newarray)
+})
+
+//----------view alumni conformation--------
+app.post('/api/pendingalumni',async(req, res)=>{
+
+    let data = await alumniAddModel.find()
+    console.log("first")
+    let newarray = data.filter(item=> item.confirmed===false)
+    res.json(newarray)
+})
 
 
 //----------add faculty----------
@@ -117,7 +136,12 @@ app.get('/api/viewalljobs', async(req,res)=>{
 
 //delete a job
 app.post('/api/deletejob', async (req,response)=>{
-    let data=await jobModel.findByIdAndDelete(req.body)
+    let data=await jobModel.findByIdAndDelete//----------delete faculty----------
+    app.post('/api/deletefaculty', async(req,res)=>{
+    
+        let data = await facultyModel.findByIdAndDelete(req.body)
+        res.json({status : 'Data Deleted'})
+    })
     response.json({status : "Job Deleted"})
 })
 
@@ -132,3 +156,27 @@ app.post('/api/updatejob',async (req,res)=>{
 
 
 //============================ALUMINI SIDE CODE=================================================================================
+//  Register Alumni
+app.post('/api/alumniregister',async(req,res)=>{
+    let data =await new alumniAddModel(req.body)
+    data.save()
+    res.json({status : 'One Data Saved'})
+    console.log(data)
+    console.log("Alumni registration Success")
+})
+
+
+//view Alumni
+app.post('/api/viewalumni', async(req,res)=>{
+
+    let data = await alumniAddModel.find()
+    res.json(data)
+
+})
+
+//----------delete alumni----------
+app.post('/api/deletealumni', async(req,res)=>{
+
+    let data = await alumniAddModel.findByIdAndDelete(req.body)
+    res.json({status : 'Data Deleted'})
+})

@@ -43,12 +43,15 @@ const employeeSchema = new mongoose.Schema(
             required : true
         },
         personalnumber : {
-            type : String,
+            type : Number,
             required : true
         },
         password : {
-            type : String,
-            required : true
+            type : String
+        },
+        confirmed : {
+            type : Boolean,
+            default : false
         }
     }
 )
