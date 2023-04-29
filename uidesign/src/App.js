@@ -8,6 +8,7 @@ import { Adminhome } from './components/Adminhome';
 import { Pendingemploy } from './components/Pendingemploy';
 import {AlumniRegister} from './components/AlumniRegister';
 import { PendingAlumni } from './components/PendingAlumni';
+import { Editprofile } from './components/Editprofile';
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path='/pendingemployer' exact element={ <Pendingemploy/> } />
         <Route path='/alumni' exact element={ <AlumniRegister/> } />
         <Route path='/pendingalumni' exact element={ <PendingAlumni/> } />
+        <Route path="/Editprofile" exact element={<Editprofile/>}/>
        </Routes>
       </BrowserRouter>
     </div>
