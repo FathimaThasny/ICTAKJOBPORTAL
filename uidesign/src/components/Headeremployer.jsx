@@ -1,6 +1,6 @@
 import React from 'react'
 import profileicon from './img/profileicon.png'
-import DropdownItem from './DropdownItem'
+// import DropdownItem from './DropdownItem'
 import axios from 'axios'
 export const Headeremployer = () => {
     const apiURL="http://localhost:3000/api/getemployerdetails"
@@ -35,7 +35,7 @@ export const Headeremployer = () => {
                                             <div class="w3-right">
                               
                     <button  type="button" id="profilebtn" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img type="button" id="profile"src={profileicon}/>
+                        <img type="button" id="profile" src={profileicon}/>
                     </button>
                     <ul className="dropdown-menu dropdown-menu-end">
                         <li><a className="dropdown-item" onClick={clickEdit} href="Editprofile">Edit Profile</a></li>
