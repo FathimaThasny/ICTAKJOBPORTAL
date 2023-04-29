@@ -15,7 +15,10 @@ export const Header = () => {
                             <a class="nav-link active" aria-current="page" href="/home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="/employsignup">Post a Job/Employer Signup</a>
+                            <a class="nav-link active" href="/employsignup">Employer Signup</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/postnewjob">Post a job</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/alumni">SignUp </a>

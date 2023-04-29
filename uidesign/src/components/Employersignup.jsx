@@ -35,7 +35,7 @@ export const Employersignup = () => {
             
             <div className="row g-3">
                 {/* <h1 className="heading fw-Bolder">EMPLOYEE APP</h1> */}
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 g-3">
+                {/* <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 g-3"> */}
                 {/* <div className="form-check form-check-inline">
                    <input className="form-check-input" type="radio" name="role" id="inlineRadio1" value="user" onClick={changeData} ></input>
                    <label className="form-check-label" for="inlineRadio1">USER</label>
@@ -61,11 +61,11 @@ export const Employersignup = () => {
                     <label htmlFor="" className="form-label">Address</label>
                     <textarea name='adress' className="form-control" onChange={changeData}/>
                 </div>
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">District</label>
                     <input name='district' type="text" className="form-control" onChange={changeData}/>
                 </div>
-                <div className="col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">State</label>
                     <input name='state' type="text" className="form-control" onChange={changeData}/>
                 </div>
@@ -73,11 +73,11 @@ export const Employersignup = () => {
                     <label htmlFor="" className="form-label">Company Description </label>
                     <textarea name='description' className="form-control" onChange={changeData}/>
                 </div>
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Contact Person's Name</label>
                     <input name='personname' type="text" className="form-control" onChange={changeData}/>
                 </div>
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Contact Email</label>
                     <input name='personalmail' type="email" className="form-control" onChange={changeData}/>
                 </div>
@@ -89,14 +89,14 @@ export const Employersignup = () => {
                     <label htmlFor="" className="form-label">Contact Number</label>
                     <input name='personalnumber' type="text" className="form-control" onChange={changeData}/>
                 </div>
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                {/* <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                     <label htmlFor="" className="form-label">Password</label>
                     <input name='password' type="password" className="form-control" onChange={changeData}/>
                 </div>
                 <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                     <label htmlFor="" className="form-label">Confirm Password</label>
                     <input name='password' type="password" className="form-control" onChange={changeData}/>
-                </div>
+                </div> */}
                 <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-4">
                     <button onClick={clickRegister} className="btn btn-success btn-hover">Register</button>
                 </div>
@@ -106,7 +106,7 @@ export const Employersignup = () => {
             </div>
             </div>
             </div>
-        </div>
+        {/* </div> */}
     </div>
   )
 }

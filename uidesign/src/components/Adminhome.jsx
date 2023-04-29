@@ -33,7 +33,7 @@ export const Adminhome = () => {
         <div className="card-body">
         <h5 className="card-title">View All Candidate</h5>
             <p className="card-text">List of all Alumnis that are Registered to the site</p>
-            <a href="/pendingalumni" className="btn btn-primary">View List</a>
+            <a href="/viewalumni" className="btn btn-primary">View List</a>
         </div>
     </div>
     </div>
@@ -43,7 +43,7 @@ export const Adminhome = () => {
         <div className="card-body">
         <h5 className="card-title">View All Employers</h5>
             <p className="card-text">List of all Employers that are Registered to the site</p>
-            <a href="/pendingalumni" className="btn btn-primary">View List</a>
+            <a href="/viewemployer" className="btn btn-primary">View List</a>
         </div>
     </div>
     </div>

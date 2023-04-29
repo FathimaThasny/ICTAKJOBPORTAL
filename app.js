@@ -1,9 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-<<<<<<< HEAD
 const nodemailer = require("nodemailer");
-=======
->>>>>>> d729e41f3a8d57bd0feb5379f8ef8c75c65ea670
 const bodyparser = require('body-parser')
 const { employeeModel } = require('./model/employee')
 const { facultyModel } = require('./model/faculty')
@@ -84,7 +81,6 @@ app.post('/api/pendingalumni',async(req, res)=>{
     res.json(newarray)
 })
 
-<<<<<<< HEAD
 //-----------vrifying employer----------
 app.post('/api/verifyemployer', async(req,res)=>{
     console.log(req.body)
@@ -123,8 +119,6 @@ const transport = nodemailer.createTransport({
     }).catch(err => console.log(err));
   };
 
-=======
->>>>>>> d729e41f3a8d57bd0feb5379f8ef8c75c65ea670
 
 //----------add faculty----------
 app.post('/api/addfaculty',async(req, res)=>{
@@ -224,14 +218,11 @@ app.post('/api/deletealumni', async(req,res)=>{
 
     let data = await alumniAddModel.findByIdAndDelete(req.body)
     res.json({status : 'Data Deleted'})
-<<<<<<< HEAD
 })
-=======
-})
+
 //--------------selecting one alumni----------
 app.post('/api/selectAlumni',async(req,res)=>{
     let data = await alumniAddModel.findOne(req.body)
     res.json(data)
 })
 
->>>>>>> d729e41f3a8d57bd0feb5379f8ef8c75c65ea670

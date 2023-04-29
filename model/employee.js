@@ -15,8 +15,7 @@ const employeeSchema = new mongoose.Schema(
             required : true
         },
         address : {
-            type : String,
-            required : true
+            type : String
         },
         district : {
             type : String,
