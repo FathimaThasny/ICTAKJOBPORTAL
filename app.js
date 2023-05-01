@@ -81,7 +81,7 @@ app.post('/api/pendingalumni',async(req, res)=>{
     res.json(newarray)
 })
 
-//-----------vrifying employer----------
+//-----------verifying employer----------
 app.post('/api/verifyemployer', async(req,res)=>{
     console.log(req.body)
     let data = await employeeModel.findOneAndUpdate({"_id":req.body._id},req.body)
@@ -90,6 +90,20 @@ app.post('/api/verifyemployer', async(req,res)=>{
     sendConfirmationEmail(
         data.personname,
         data.personalmail,
+        data.password
+ );
+ res.json({status : 'Account Verified'})
+})
+
+//------------verifying alumni------------
+app.post('/api/verifyalumni', async(req,res)=>{
+    console.log(req.body)
+    let data = await alumniAddModel.findOneAndUpdate({"_id":req.body._id},req.body)
+    console.log("data in server")
+    console.log(data)
+    sendConfirmationEmail(
+        data.name,
+        data.email,
         data.password
  );
  res.json({status : 'Account Verified'})
