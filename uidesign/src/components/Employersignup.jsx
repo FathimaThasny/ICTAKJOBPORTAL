@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Header } from './Header'
+import {Footer} from './Footer'
 
 export const Employersignup = () => {
 
@@ -32,8 +33,8 @@ export const Employersignup = () => {
     <div>
         <Header/>
         <div className="container">
-            
-            <div className="row g-3">
+        <form className="form p-5">
+        <div className="row g-3">
                 {/* <h1 className="heading fw-Bolder">EMPLOYEE APP</h1> */}
                 <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 g-3">
                 {/* <div className="form-check form-check-inline">
@@ -106,7 +107,12 @@ export const Employersignup = () => {
             </div>
             </div>
             </div>
+
+            </form>
+            
         </div>
+        <Footer/>
     </div>
+    
   )
 }

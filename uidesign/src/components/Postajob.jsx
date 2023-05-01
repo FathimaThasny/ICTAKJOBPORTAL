@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { Header } from './Header'
+import { Footer } from './Footer'
 import Select from "react-select";
 
 
@@ -44,7 +45,9 @@ export const Postajob = () => {
             <Header/>
         
         <div className="container">
-            <div className="row g-3">
+        <form className="form p-5">
+        <div className="row g-3">
+                
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mb-3">
                     <label className="form-label">Job Position</label>
                     <input type="text" onChange={changeMyData} name="titleofrole"className="form-control" required />
@@ -68,14 +71,23 @@ export const Postajob = () => {
                 </div>
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Skills</label>
-                    <form>
+                   
+                    <form >
                         <Select
                         options={options}
                         onChange={handleChange}
                         value={skills}
                         isMulti
+                        styles={{
+                            control: (provided) => ({
+                              ...provided,
+                              width: '100%' // adjust the width here as needed
+                            })
+                          }}
                         />
                     </form>
+                    
+                    
                     {/* <input type="text" onChange={changeMyData} name="field" className="form-control" /> */}
                 </div>
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
@@ -98,7 +110,11 @@ export const Postajob = () => {
                     <button  className="btn btn-success" onClick={post}>Submit</button>
                 </div>
             </div>
+                    </form>
+            
+
         </div>
+        <Footer />
         </div>
 
   )
