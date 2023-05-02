@@ -4,8 +4,7 @@ import { HeaderAdmin } from './HeaderAdmin'
 
 export const PendingAlumni = () => {
     const ApiUrl = "http://localhost:1000/api/pendingalumni"
-    const deleteApi = "http://localhost:1000/api/deletealumni"
-    const verificationApi="http://localhost:1000/api/verifyalumni"
+    const deleteApi = "http://localhost:1000/api/pendingalumni"
     const [data,setData] = useState([])
 
     useEffect(()=>{
@@ -32,51 +31,7 @@ export const PendingAlumni = () => {
         }
     )     
     }
-
-    function genPassword() {
-      // console.log(event)
-      var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      var passwordLength = 8;
-      var password = "";
-   for (var i = 0; i <= passwordLength; i++) {
-     var randomNumber = Math.floor(Math.random() * chars.length);
-     password += chars.substring(randomNumber, randomNumber +1);
-    }
-          return password
-   }
-
-   const verifyData = (id,name,email,phone,qualification,course,batch,placementStatus,company)=>{
-    let pswdgenrated = genPassword()
-    console.log(pswdgenrated)
-    // console.log(event)
-    // console.log(event.confirmed)
-    console.log("setting data")
-    const input = {
-      "_id": id,
-      "name": name,
-      "email": email,
-      "phone": phone,
-      "highestQualification": qualification,
-      "course": course,
-      "batch": batch,
-      "placementStatus": placementStatus,
-      "CompanyName": company,
-      "confirmed":true,
-      "password":pswdgenrated
-    }
-    console.log("input")
-    console.log(input)
-    axios.post(verificationApi,input)
-    .then(response=>{
-      console.log(response)
-      if(response.data.status=== 'Account Verified'){
-          window.location.reload(true)
-      }
-  }
-)     
-  }
-
-
+    
   return (
 <div>
   <HeaderAdmin/>
@@ -96,7 +51,7 @@ Pending Requests  </div>
             {/* <p className="card-text">Designation : {user.designation}</p> */}
             {/* <p className="card-text "><a href={user.website} className="card-text">{user.website}</a></p> */}
           <div className="card-body">
-          <button className="btn btn-success" onClick={()=>verifyData(user._id,user.name,user.email,user.phone,user.qualification,user.course,user.batch,user.placementStatus,user.company)}>Verify</button>
+          <button className="btn btn-success">Verify</button>
           <button className="btn btn-danger" value={user._id} onClick={deleteData}>Reject</button>
           </div>
           </ul>
