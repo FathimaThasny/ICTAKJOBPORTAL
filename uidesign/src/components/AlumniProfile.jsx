@@ -1,8 +1,8 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 
-const AlumniProfile = () => {
-    
+export const AlumniProfile = () => {
+
     const apiUrl = "http://localhost:1000/api/selectAlumni"
     const[data, setData]=useState([])
    
@@ -17,7 +17,6 @@ const AlumniProfile = () => {
       }, []);
 
 
-
   return (
     <div>
         <h1>YOUR PROFILE</h1>
@@ -29,15 +28,6 @@ const AlumniProfile = () => {
         <label htmlFor="" className="form-label">Batch Details : </label><br />
         <label htmlFor="" className="form-label">Placement Status : </label><br />
         <label htmlFor="" className="form-label">Company_Name(if Placed) : </label><br />
-
-
-        
-
-
-
-
     </div>
   )
 }
-
-export default AlumniProfile 

@@ -1,9 +1,9 @@
 import React from 'react'
 
-const AlumniLogin = () => {
+export const AlumniLogin = () => {
   return (
     <div>
-<form>
+        <form>
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
@@ -15,10 +15,6 @@ const AlumniLogin = () => {
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-
     </div>
   )
 }
-
-export default AlumniLogin

@@ -4,6 +4,7 @@ import logo from '../images/logosmall.png';
 export const Header = () => {
   return (
     <div>
+
         <nav className="navbar navbar-expand-lg bg-dark">
     <div className="container-fluid">
     
@@ -29,6 +30,8 @@ export const Header = () => {
       </div>
     </div>
   </nav>
+
+
     </div>
   )
 }

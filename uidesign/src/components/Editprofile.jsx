@@ -23,7 +23,7 @@ export const Editprofile = () => {
         .then(response =>{
             console.log(response)
             alert(response.data.status)
-            navigate('/Home')
+            navigate('/home')
         })
     }
 

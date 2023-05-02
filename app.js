@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const nodemailer = require("nodemailer");
 const bodyparser = require('body-parser')
 const { employeeModel } = require('./model/employee')
 const { facultyModel } = require('./model/faculty')
@@ -79,6 +80,44 @@ app.post('/api/pendingalumni',async(req, res)=>{
     let newarray = data.filter(item=> item.confirmed===false)
     res.json(newarray)
 })
+
+//-----------vrifying employer----------
+app.post('/api/verifyemployer', async(req,res)=>{
+    console.log(req.body)
+    let data = await employeeModel.findOneAndUpdate({"_id":req.body._id},req.body)
+    console.log("data in server")
+    console.log(data)
+    sendConfirmationEmail(
+        data.personname,
+        data.personalmail,
+        data.password
+ );
+ res.json({status : 'Account Verified'})
+})
+
+//----------------mail using nodemailer------------------
+const transport = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: "fathimathasny4@gmail.com",
+      pass: "eesmmebkmejafbud"
+    },
+  });
+  const sendConfirmationEmail = (name, email, password) => {
+    console.log("Check");
+    transport.sendMail({
+      from: "fathimathasny4@gmail.com",
+      to: email,
+      subject: "Account Verified!",
+      html: `<h1>Welcome!</h1>
+          <h2>Hello ${name}</h2>
+          <p>Your Account has been Verified by Admin.</p>
+          <p> You can Sign In using following Credentials...</p>
+          <p>Username: ${email}</p>
+          <p>password: ${password}</p>
+          </div>`,
+    }).catch(err => console.log(err));
+  };
 
 
 //----------add faculty----------
@@ -180,6 +219,7 @@ app.post('/api/deletealumni', async(req,res)=>{
     let data = await alumniAddModel.findByIdAndDelete(req.body)
     res.json({status : 'Data Deleted'})
 })
+
 //--------------selecting one alumni----------
 app.post('/api/selectAlumni',async(req,res)=>{
     let data = await alumniAddModel.findOne(req.body)
