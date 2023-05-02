@@ -77,7 +77,7 @@ app.post('/api/pendingalumni',async(req, res)=>{
 
     let data = await alumniAddModel.find()
     console.log("first")
-    let newarray = data.filter(item=> item.confirmed===false)
+    let newarray = data.filter(item=>item.confirmed===false)
     res.json(newarray)
 })
 
