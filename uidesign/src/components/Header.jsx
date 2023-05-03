@@ -3,7 +3,7 @@ import logo from '../images/logosmall.png';
 
 export const Header = () => {
   return (
-    <div>
+    <div className='md-3'>
 
         <nav className="navbar navbar-expand-lg bg-dark fixed-top">
     <div className="container-fluid">
