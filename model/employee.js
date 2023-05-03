@@ -35,6 +35,7 @@ const employeeSchema = new mongoose.Schema(
         },
         personalmail : {
             type : String,
+            unique: true,
             required : true
         },
         designation : {

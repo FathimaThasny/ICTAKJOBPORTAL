@@ -171,6 +171,55 @@ app.post('/api/deletefaculty', async(req,res)=>{
 
 //========================================================EMPLOYER SIDE CODES================================================================
 
+//-------employer login------------
+app.post('/api/employlogin',async(req,res)=>{
+   
+    let mail=req.body.personalmail
+    let password=req.body.password
+
+    if(mail === "ictakadmin@gmail.com"){
+        if(password === "ICT@admin2023"){
+            res.json({status : 'Login Successful as ADMIN'})
+            console.log("inside admin")
+        }
+        else{
+            res.json({status:"Password Incorrect"})
+        }
+    }
+    else{
+
+    let user = await employeeModel.findOne({personalmail : mail})
+    console.log(user)
+    // console.log(user.password)
+    console.log(password)
+    
+    if((!user)){
+        res.json({msg: "User not found"})  
+    }
+    try{
+        if (user.confirmed === false) {
+            
+             res.json({ msg : "Pending Account. Please Wait for Admin conformation"})
+           
+          }
+        else if(user.password===password){
+            res.json({msg:"login successful"})
+            
+            
+        }else{
+            res.json({msg:"login failed"})
+        }}catch(error){
+            res.status(400).json({
+                message:"An error occured",
+                error: error.message
+            })
+        }
+    }
+    }
+    
+)  
+
+
 //posting job psoting into db
 app.post('/api/newjobpost',async(req,res)=>{
     let data =new jobModel(req.body)

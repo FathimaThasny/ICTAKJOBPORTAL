@@ -1,13 +1,54 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../images/logosmall.png';
 import { Header } from './Header';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 export const LoginEmployer = () => {
 
-  const clickLogin = ()=>{
+  const apiUrl = "http://localhost:1000/api/employlogin"
 
+  const [input,setInput] = useState({})
+
+  const navigate = useNavigate()
+
+  const changeData = (event) =>{
+
+      setInput({
+          ...input,[event.target.name]:event.target.value
+      })
   }
+
+  const clickLogin = () =>{
+      axios.post(apiUrl,input)
+      .then(response =>{
+          console.log(response)
+          if(response.data.msg === "login successful"){
+              // const token = response.data.token
+              // console.log(response.data.data)
+              // const userId = response.data.data._id
+              // let role = response.data.data.role
+
+              // console.log(role)
+
+              // sessionStorage.setItem("userToken",token)
+              // sessionStorage.setItem("userId",userId)
+              // sessionStorage.setItem("role",role)
+              console.log("employe")
+              navigate("/home")
+          }else if(response.data.status === "Login Successful as ADMIN"){
+            console.log("admin")
+            navigate("/adminhome")
+          }
+          else{
+              alert("Invalid Credentials")
+          }
+      
+      })
+  }
+
+
   return (
     <div>
     <Header/>
@@ -23,24 +64,24 @@ export const LoginEmployer = () => {
                             </div>
                             <div className="col col-sm-8">
                                 <div className="p-4 d-grid gap-2">
-                                    <h4>Employer Sign in</h4>
+                                    <h4>Employer SignIn</h4>
                                     <p className="mb-3">to access the portal</p>
-                                    <form action="https://placements.ictkerala.com/company-verify" method="POST" enctype="multipart/form-data">
+                                    <div className='datafields'>
                                         {/* <input type="hidden" name="_token" value="FsQNRKX5A5OxZeeblXZMhpJyCeFYEocNCWXGugpw">                                        */}
                                         <div className="form-group p-2 ">
-                                            <input type="text" className="form-control" placeholder="Email" name="email" value="" min="8"/>
+                                            <input type="text" className="form-control" placeholder="Email" name="personalmail"  min="8" onChange={changeData}/>
                                         </div>
                                         <div className="form-group p-2">
-                                            <input type="password" className="form-control" placeholder="Password" name="password" value=""/>
+                                            <input type="password" className="form-control" placeholder="Password" name="password" onChange={changeData}/>
                                         </div>
                                         <div className="my-3">
-                                            <a href="https://placements.ictkerala.com/forget-password-page" className="only-link text-primary hover" style={{textDecoration: "none"}}>Forgot Password?</a>
+                                            <a href="/" className="only-link text-primary hover" style={{textDecoration: "none"}}>Forgot Password?</a>
                                         </div>
                                         <div className="d-flex justify-content-between align-items-center">
-                                            <a href="https://placements.ictkerala.com/company-registration" className="text-primary only-link" style={{textDecoration: "none"}}>Register Now</a>
+                                            <a href="/employsignup" className="text-primary only-link" style={{textDecoration: "none"}}>Register Now</a>
                                             <button type="submit" className="btn btn-primary btn-hover" onClick={clickLogin}>Sign in</button>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
