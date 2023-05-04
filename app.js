@@ -242,9 +242,48 @@ app.post('/api/deletealumni', async(req,res)=>{
     res.json({status : 'Data Deleted'})
 })
 
-//--------------selecting one alumni----------
-app.post('/api/selectAlumni',async(req,res)=>{
-    let data = await alumniAddModel.findOne(req.body)
-    res.json(data)
-})
+//-------------- alumni login----------
+app.post('/api/alumnilogin',async(req,res)=>{
+    console.log("hai")
+    let email=req.body.email
+    let password=req.body.password
 
+    let data = await alumniAddModel.findOne({email : email})
+    console.log(data)
+    // console.log(user.password)
+    console.log(password)
+
+    if((!data)){
+        res.json({msg: "Data not found"})  
+    }
+    try{
+        if (data.confirmed === false) {
+            
+             res.json({ msg : "Pending Account. Please Wait for Admin conformation"})
+           
+          }
+        else if(data.password===password){
+            res.json({msg:"login successful"})
+            console.log("hai")
+            
+            
+        }else{
+            res.json({msg:"login failed"})
+        }}catch(error){
+            res.status(400).json({
+                message:"An error occured",
+                error: error.message
+            })
+        }
+    }
+    
+)  
+
+// ------------alumni update password-------------------
+
+app.post('/api/alumniupdatepassword', async(req,res)=>{
+    console.log(req.body._id)
+    let data=await alumniAddModel.findOneAndUpdate({"id":req.body.id}, req.body)
+    res.json(data)
+
+})
