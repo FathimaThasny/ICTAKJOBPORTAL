@@ -38,8 +38,8 @@ a{
 
 /* post a job-soorya */
 .container{
-  margin-top: 40px;
-  
+  margin-top: 100px;
+  margin-bottom: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,3 +61,15 @@ footer >p{
   font-size:small;
 }
 /* Footer-soorya ends here*/
+
+/* Home-soorya */
+.card{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+/* Home-soorya ends here*/
+
+
+
+  
+

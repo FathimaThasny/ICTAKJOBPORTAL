@@ -96,9 +96,16 @@ export const Editprofile = () => {
                     <label htmlFor="" className="form-label">Confirm Password</label>
                     <input name='password' type="password" className="form-control" onChange={changeData}/>
                 </div>
-                <div className="col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1 mt-4">
-                    <button name="registerempbtn" onClick={clickUpdate} className="btn btn-success btn-hover">Update</button>
+
+                <div className="d-flex">
+                    <div className="col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1 mt-4">
+                        <button name="registerempbtn" onClick={clickUpdate} className="btn btn-success btn-hover">Update</button>
+                    </div>
+                    <div className="col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1 mt-4">
+                        <button name="registerempbtn" onClick={clickUpdate} className="btn btn-success btn-hover">Update</button>
+                    </div>
                 </div>
+ 
                 
             </div>
             </div>

@@ -37,7 +37,6 @@ export const Home = () => {
         )
       }
  
-
 {/* <div className="card text-bg-secondary mb-3" style={{float: 'left'}}>
             <div className="card-header"></div>
             <div className="card-body">
@@ -91,5 +90,7 @@ export const Home = () => {
           <Footer />
 
 </div>
+
   )
 }
+

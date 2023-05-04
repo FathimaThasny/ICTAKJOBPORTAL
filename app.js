@@ -3,6 +3,10 @@ const cors = require('cors')
 const nodemailer = require("nodemailer");
 const bodyparser = require('body-parser')
 const { employeeModel } = require('./model/employee')
+<<<<<<< HEAD
+const { facultyModel } = require('./model/faculty')
+=======
+>>>>>>> b3bc86907215f0e2463c214e9ec3c1d2d3f0bc0a
 const { jobModel } = require('./model/jobpost')
 const {alumniAddModel} = require('./model/alumniAddModel');
 const { alumniResponseModel } = require('./model/alumniResponseForm');
@@ -134,6 +138,44 @@ const transport = nodemailer.createTransport({
   };
 
 
+<<<<<<< HEAD
+//----------add faculty----------
+app.post('/api/addfaculty',async(req, res)=>{
+
+    let data = await new facultyModel(req.body)
+    data.save()
+    res.json({status : ' Added One Faculty'})
+
+})
+
+//---------view faculty----------
+app.post('/api/viewfaculty', async(req,res)=>{
+
+    let data = await facultyModel.find()
+    res.json(data)
+
+})
+
+//----------edit faculty----------
+app.post('/api/editfaculty', async(req,res)=>{
+
+    let data = await facultyModel.findOneAndUpdate({"_id":req.body._id}, req.body)
+    res.json({status : 'Data Updated'})
+})
+
+//----------delete faculty----------
+app.post('/api/deletefaculty', async(req,res)=>{
+
+    let data = await facultyModel.findByIdAndDelete(req.body)
+    res.json({status : 'Data Deleted'})
+})
+
+
+
+
+
+=======
+>>>>>>> b3bc86907215f0e2463c214e9ec3c1d2d3f0bc0a
 //========================================================EMPLOYER SIDE CODES================================================================
 
 //-------employer login------------
@@ -203,7 +245,16 @@ app.get('/api/viewalljobs', async(req,res)=>{
 
 //delete a job
 app.post('/api/deletejob', async (req,response)=>{
+<<<<<<< HEAD
+    let data=await jobModel.findByIdAndDelete//----------delete faculty----------
+    app.post('/api/deletefaculty', async(req,res)=>{
+    
+        let data = await facultyModel.findByIdAndDelete(req.body)
+        res.json({status : 'Data Deleted'})
+    })
+=======
     let data=await jobModel.findByIdAndDelete
+>>>>>>> b3bc86907215f0e2463c214e9ec3c1d2d3f0bc0a
     response.json({status : "Job Deleted"})
 })
 
@@ -243,6 +294,14 @@ app.post('/api/deletealumni', async(req,res)=>{
     res.json({status : 'Data Deleted'})
 })
 
+<<<<<<< HEAD
+//--------------selecting one alumni----------
+app.post('/api/selectAlumni',async(req,res)=>{
+    let data = await alumniAddModel.findOne(req.body)
+    res.json(data)
+})
+
+=======
 //-------------- alumni login----------
 app.post('/api/alumnilogin',async(req,res)=>{
     console.log("hai")
@@ -288,6 +347,7 @@ app.post('/api/alumniupdatepassword', async(req,res)=>{
     res.json(data)
 
 })
+<<<<<<< HEAD
 
 // ----------------------alumniResponseModel-------------------
 app.post('/api/alumniresponseform',async(req,res)=>{
@@ -305,3 +365,6 @@ app.post('/api/viewalumniresponseform', async(req,res)=>{
     res.json(data)
 
 })
+=======
+>>>>>>> b3bc86907215f0e2463c214e9ec3c1d2d3f0bc0a
+>>>>>>> 1ceedc0a7675679d842a8032ac75538195d3769e

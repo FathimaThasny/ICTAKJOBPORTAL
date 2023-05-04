@@ -39,6 +39,7 @@ export const AlumniRegister = () => {
       
   return (
 <div >
+
         <h1>Alumni Registration </h1>
         <div className="container">
         <div className="row">
