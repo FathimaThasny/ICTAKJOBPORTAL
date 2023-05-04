@@ -38,7 +38,7 @@ export const AlumniRegister = () => {
       };
       
   return (
-<div>
+<div >
         <h1>Alumni Registration </h1>
         <div className="container">
         <div className="row">
@@ -60,7 +60,7 @@ export const AlumniRegister = () => {
           </div>
 
           
-      <div>
+      <div id='drop'>
             <label htmlFor="my-dropdown">Course studied at ICTAK : </label>
             <select name='course' id="my-dropdown" value={selectedCourse} onChange={handleCourseChange}>
                  <option value=""></option>
@@ -73,7 +73,7 @@ export const AlumniRegister = () => {
             </select>
       <p>You selected: {selectedCourse}</p>
     </div>
-    <div>
+    <div id='drop'>
             <label htmlFor="my-dropdown">Batch Details :</label>
             <select name='batch' id="my-dropdown" value={selectedBatch} onChange={handleBatchChange}>
                  <option value=""></option>
@@ -83,7 +83,7 @@ export const AlumniRegister = () => {
             </select>
       <p>You selected: {selectedBatch}</p>
     </div>
-    <div>
+    <div id='drop'>
             <label htmlFor="my-dropdown">Placement Status :</label>
             <select name='placementStatus' id="my-dropdown" value={selectedPlacementStatus} onChange={handlePlacementChange}>
                  <option value=""></option>

@@ -1,6 +1,12 @@
 import React from 'react'
 
 export const AlumniLogin = () => {
+  const apiUrl ="http://localhost:1000/api/selectAlumni"
+
+  
+
+
+
   return (
     <div>
         <form>
