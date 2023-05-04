@@ -3,7 +3,6 @@ const cors = require('cors')
 const nodemailer = require("nodemailer");
 const bodyparser = require('body-parser')
 const { employeeModel } = require('./model/employee')
-const { facultyModel } = require('./model/faculty')
 const { jobModel } = require('./model/jobpost')
 const {alumniAddModel} = require('./model/alumniAddModel')
 
@@ -134,41 +133,6 @@ const transport = nodemailer.createTransport({
   };
 
 
-//----------add faculty----------
-app.post('/api/addfaculty',async(req, res)=>{
-
-    let data = await new facultyModel(req.body)
-    data.save()
-    res.json({status : ' Added One Faculty'})
-
-})
-
-//---------view faculty----------
-app.post('/api/viewfaculty', async(req,res)=>{
-
-    let data = await facultyModel.find()
-    res.json(data)
-
-})
-
-//----------edit faculty----------
-app.post('/api/editfaculty', async(req,res)=>{
-
-    let data = await facultyModel.findOneAndUpdate({"_id":req.body._id}, req.body)
-    res.json({status : 'Data Updated'})
-})
-
-//----------delete faculty----------
-app.post('/api/deletefaculty', async(req,res)=>{
-
-    let data = await facultyModel.findByIdAndDelete(req.body)
-    res.json({status : 'Data Deleted'})
-})
-
-
-
-
-
 //========================================================EMPLOYER SIDE CODES================================================================
 
 //-------employer login------------
@@ -238,12 +202,7 @@ app.get('/api/viewalljobs', async(req,res)=>{
 
 //delete a job
 app.post('/api/deletejob', async (req,response)=>{
-    let data=await jobModel.findByIdAndDelete//----------delete faculty----------
-    app.post('/api/deletefaculty', async(req,res)=>{
-    
-        let data = await facultyModel.findByIdAndDelete(req.body)
-        res.json({status : 'Data Deleted'})
-    })
+    let data=await jobModel.findByIdAndDelete
     response.json({status : "Job Deleted"})
 })
 
