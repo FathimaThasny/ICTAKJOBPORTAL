@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const AlumniProfile = () => {
 
-    const apiUrl = "http://localhost:1000/api/selectAlumni"
+    const apiUrl = "http://localhost:1000/api/viewalumni"
     const[data, setData]=useState([])
    
    
@@ -19,19 +19,32 @@ export const AlumniProfile = () => {
 
   return (
     <div>
-        <h1>YOUR PROFILE</h1>
-       
-        <ul class="list-group">
-          <li class="list-group-item">NAME : </li>
-          <li class="list-group-item">EMAIL :</li>
-          <li class="list-group-item">Phone_No :</li>
-          <li class="list-group-item">Highest_Qualification: </li>
-          <li class="list-group-item">Course studied at ICTAK :</li>
-          <li class="list-group-item">Batch Details :</li>
-          <li class="list-group-item">Placement Status :</li>
-          <li class="list-group-item">Company_Name(if Placed) :</li>
+      <div class="mb-3">
+      <h1>YOUR PROFILE</h1>
+      {data.map(
+        (user)=>{
+          return<ul class="list-group">
+          <li class="list-group-item">NAME : {user.name} </li>
+          <li class="list-group-item">EMAIL : {user.email}</li>
+          <li class="list-group-item">Phone_No : {user.phone}</li>
+          <li class="list-group-item">Highest_Qualification: {user.highestQualification}</li>
+          <li class="list-group-item">Course studied at ICTAK : {user.course}</li>
+          <li class="list-group-item">Batch Details : {user.batch}</li>
+          <li class="list-group-item">Placement Status : {user.placementStatus}</li>
+          <li class="list-group-item">Company_Name(if Placed) : {user.CompanyName}</li>
+ 
+          </ul>
+        }
+          
 
-       </ul>
+
+      )}
+      
+      </div>
+
+      <div class="mb-3">
+        <button type="button" class="btn btn-success">Edit Your Profile</button>
+      </div>
     </div>
   )
 }
