@@ -4,7 +4,8 @@ const nodemailer = require("nodemailer");
 const bodyparser = require('body-parser')
 const { employeeModel } = require('./model/employee')
 const { jobModel } = require('./model/jobpost')
-const {alumniAddModel} = require('./model/alumniAddModel')
+const {alumniAddModel} = require('./model/alumniAddModel');
+const { alumniResponseModel } = require('./model/alumniResponseForm');
 
 const app = express()
 
@@ -284,6 +285,23 @@ app.post('/api/alumnilogin',async(req,res)=>{
 app.post('/api/alumniupdatepassword', async(req,res)=>{
     console.log(req.body._id)
     let data=await alumniAddModel.findOneAndUpdate({"id":req.body.id}, req.body)
+    res.json(data)
+
+})
+
+// ----------------------alumniResponseModel-------------------
+app.post('/api/alumniresponseform',async(req,res)=>{
+    let data =await new alumniResponseModel(req.body)
+    data.save()
+    res.json({status : 'response Added '})
+    console.log(data)
+    console.log("Alumni Response Added")
+
+})
+// ----------------------------view alumniResponseModel---------
+app.post('/api/viewalumniresponseform', async(req,res)=>{
+
+    let data = await alumniResponseModel.find()
     res.json(data)
 
 })
