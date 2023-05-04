@@ -8,8 +8,9 @@ export const Home = () => {
   const [data,setData] =useState([])
 
   useEffect(() => {
-    axios.get(ApiUrl).then(
+    axios.post(ApiUrl).then(
       (response)=>{
+        console.log("inside axios")
         console.log(response)
         setData(response.data)
       }
@@ -17,21 +18,58 @@ export const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className='root mt-5 pt-5'>
         <Header />
-      
+      <section className="listContainer fleft mx-5 p-5">
+        <div className="list ">
       {data.map(
           (user)=>{
-            return <div className="card mt-5 pt-5">
-            <div className="card text-bg-primary mt-3" style={{float: 'left'}}>
-            <div className="card-header">{user.titleofrole}</div>
-            <div className="card-body">
-              <h5 className="card-title">Primary card title</h5>
-              <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
+            return <article className='jobTuple bg-light border-0 rounded-5 w-100 h-100 shadow p-3' key={user._id}>
+              <div className="jobTupleHeader">
+                <div className="info fleft ">
+                  <h4 className="title ellipsis">{user.titleofrole}</h4>
+                  <div className="companyInfo subheading">
+                    <p className="subTitle ellipsis fleft">{user.company}</p>
+                  </div>
+                </div>
+                <ul className='details p-0 m-0'>
+                  <li className="fleft br2 placeHolderLi experience ">
+                  <i className="bi bi-briefcase fleft"></i>
+                  <span className="ellipsis fleft">{user.experience}</span>
+                  <span className="seperator"></span>
+                  </li>
+                  <li className="fleft br2 placeHolderLi salary px-2">
+                  <i className="bi bi-currency-rupee fleft"></i>
+                  <span className="ellipsis fleft">{user.salary}</span>
+                  <span className="seperator"></span>
+                  </li>
+                  <li className="fleft br2 placeHolderLi place px-2">
+                  <i className="bi bi-geo-alt fleft"></i>
+                  <span className="ellipsis fleft">{user.place}</span>
+                  <span className="seperator"></span>
+                  </li>
+                </ul>
+                </div>
+                <div className="ellipsis description fleft mb-2">
+                <i className="bi bi-card-text"></i>
+                {user.description}
+                </div>
+                <div className="jobFooter mt-2 py-3">
+                  <div className="fleft">{user.createdAt}</div>
+                  <button className='btn btn-primary fright'>Apply</button>
+                </div>
+              
+            </article>
+          //   <div className="card mt-5 pt-5">
+          //   <div className="card text-bg-primary mt-3" style={{float: 'left'}}>
+          //   <div className="card-header">{user.titleofrole}</div>
+          //   <div className="card-body">
+          //     <h5 className="card-title">Primary card title</h5>
+          //     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          //   </div>
+          // </div>
           
-          </div>
+          // </div>
         
           }
         )
@@ -86,7 +124,8 @@ export const Home = () => {
               <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div> */}
-          
+          </div>
+          </section>
           <Footer />
 
 </div>

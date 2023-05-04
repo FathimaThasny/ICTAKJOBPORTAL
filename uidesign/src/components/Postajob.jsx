@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { Header } from './Header'
 import { Footer } from './Footer'
-import Select from "react-select";
+// import Select from "react-select";
 
 
 export const Postajob = () => {
@@ -26,18 +26,18 @@ export const Postajob = () => {
             navigate('/home')
         })
     }
-    const options = [
-        { value: "React", label: "React" },
-        { value: "Vue", label: "Vue" },
-        { value: "Angular", label: "Angular" },
-        { value: "Java", label: "Java" }
-      ];
+    // const options = [
+    //     { value: "React", label: "React" },
+    //     { value: "Vue", label: "Vue" },
+    //     { value: "Angular", label: "Angular" },
+    //     { value: "Java", label: "Java" }
+    //   ];
       
-        const [skills, setSkills] = useState([]);
+    //     const [skills, setSkills] = useState([]);
       
-        const handleChange = (skills) => {
-          setSkills(skills || []);
-        };
+    //     const handleChange = (skills) => {
+    //       setSkills(skills || []);
+    //     };
     
         return (
 

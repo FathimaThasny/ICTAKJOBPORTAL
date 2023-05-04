@@ -63,9 +63,51 @@ footer >p{
 /* Footer-soorya ends here*/
 
 /* Home-soorya */
-.card{
+.root{
   margin-top: 100px;
   margin-bottom: 100px;
+}
+.details{
+  width: 100%;
+  height: auto;
+    display: inline-block;
+    list-style: none;
+    /* margin-top: 10px; */
+
+}
+.fleft{
+  float: left;
+}
+li{
+  display: flex;
+  position: relative;
+  align-items: center;
+  line-height: 19px;
+  font-size: 15px;
+}
+.list{
+  width: 100%;
+    display: inline-block;
+    /* margin-top: px; */
+}
+.info{
+  font-size: 15px;
+  height: 60px;
+  justify-content: left;
+}
+.jobTupleHeader{
+  height: 90px;
+}
+.jobTuple{
+  position: relative;
+  justify-content: left;
+}
+.fright{
+  float: right;
+}
+.jobFooter{
+  font-size: 12px;
+
 }
 /* Home-soorya ends here*/
 
