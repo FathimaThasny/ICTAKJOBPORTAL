@@ -17,9 +17,15 @@ const jobSchema  =new Mongoose.Schema(
             type:String,
             required:true
         },
+<<<<<<< HEAD
         field:{
             type:String,
             required:true
+=======
+        Field:{
+            type:String
+            // required:true
+>>>>>>> b3bc86907215f0e2463c214e9ec3c1d2d3f0bc0a
         },
         email:{
             type : String,

@@ -3,7 +3,10 @@ const cors = require('cors')
 const nodemailer = require("nodemailer");
 const bodyparser = require('body-parser')
 const { employeeModel } = require('./model/employee')
+<<<<<<< HEAD
 const { facultyModel } = require('./model/faculty')
+=======
+>>>>>>> b3bc86907215f0e2463c214e9ec3c1d2d3f0bc0a
 const { jobModel } = require('./model/jobpost')
 const {alumniAddModel} = require('./model/alumniAddModel')
 
@@ -134,6 +137,7 @@ const transport = nodemailer.createTransport({
   };
 
 
+<<<<<<< HEAD
 //----------add faculty----------
 app.post('/api/addfaculty',async(req, res)=>{
 
@@ -169,6 +173,8 @@ app.post('/api/deletefaculty', async(req,res)=>{
 
 
 
+=======
+>>>>>>> b3bc86907215f0e2463c214e9ec3c1d2d3f0bc0a
 //========================================================EMPLOYER SIDE CODES================================================================
 
 //-------employer login------------
@@ -238,12 +244,16 @@ app.get('/api/viewalljobs', async(req,res)=>{
 
 //delete a job
 app.post('/api/deletejob', async (req,response)=>{
+<<<<<<< HEAD
     let data=await jobModel.findByIdAndDelete//----------delete faculty----------
     app.post('/api/deletefaculty', async(req,res)=>{
     
         let data = await facultyModel.findByIdAndDelete(req.body)
         res.json({status : 'Data Deleted'})
     })
+=======
+    let data=await jobModel.findByIdAndDelete
+>>>>>>> b3bc86907215f0e2463c214e9ec3c1d2d3f0bc0a
     response.json({status : "Job Deleted"})
 })
 
@@ -283,9 +293,57 @@ app.post('/api/deletealumni', async(req,res)=>{
     res.json({status : 'Data Deleted'})
 })
 
+<<<<<<< HEAD
 //--------------selecting one alumni----------
 app.post('/api/selectAlumni',async(req,res)=>{
     let data = await alumniAddModel.findOne(req.body)
     res.json(data)
 })
 
+=======
+//-------------- alumni login----------
+app.post('/api/alumnilogin',async(req,res)=>{
+    console.log("hai")
+    let email=req.body.email
+    let password=req.body.password
+
+    let data = await alumniAddModel.findOne({email : email})
+    console.log(data)
+    // console.log(user.password)
+    console.log(password)
+
+    if((!data)){
+        res.json({msg: "Data not found"})  
+    }
+    try{
+        if (data.confirmed === false) {
+            
+             res.json({ msg : "Pending Account. Please Wait for Admin conformation"})
+           
+          }
+        else if(data.password===password){
+            res.json({msg:"login successful"})
+            console.log("hai")
+            
+            
+        }else{
+            res.json({msg:"login failed"})
+        }}catch(error){
+            res.status(400).json({
+                message:"An error occured",
+                error: error.message
+            })
+        }
+    }
+    
+)  
+
+// ------------alumni update password-------------------
+
+app.post('/api/alumniupdatepassword', async(req,res)=>{
+    console.log(req.body._id)
+    let data=await alumniAddModel.findOneAndUpdate({"id":req.body.id}, req.body)
+    res.json(data)
+
+})
+>>>>>>> b3bc86907215f0e2463c214e9ec3c1d2d3f0bc0a

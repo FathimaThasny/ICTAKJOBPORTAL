@@ -20,14 +20,18 @@ export const AlumniProfile = () => {
   return (
     <div>
         <h1>YOUR PROFILE</h1>
-        <label htmlFor="" className="form-label">NAME : </label><br />
-        <label htmlFor="" className="form-label">EMAIL : </label><br />
-        <label htmlFor="" className="form-label">Phone_No : </label><br />
-        <label htmlFor="" className="form-label">Highest_Qualification: </label><br />
-        <label htmlFor="" className="form-label">Course studied at ICTAK : </label><br />
-        <label htmlFor="" className="form-label">Batch Details : </label><br />
-        <label htmlFor="" className="form-label">Placement Status : </label><br />
-        <label htmlFor="" className="form-label">Company_Name(if Placed) : </label><br />
+       
+        <ul class="list-group">
+          <li class="list-group-item">NAME : </li>
+          <li class="list-group-item">EMAIL :</li>
+          <li class="list-group-item">Phone_No :</li>
+          <li class="list-group-item">Highest_Qualification: </li>
+          <li class="list-group-item">Course studied at ICTAK :</li>
+          <li class="list-group-item">Batch Details :</li>
+          <li class="list-group-item">Placement Status :</li>
+          <li class="list-group-item">Company_Name(if Placed) :</li>
+
+       </ul>
     </div>
   )
 }

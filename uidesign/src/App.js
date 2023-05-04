@@ -13,6 +13,7 @@ import { AlumniLogin } from './components/AlumniLogin';
 import { AlumniProfile } from './components/AlumniProfile';
 import { ViewAlumnis } from './components/ViewAlumnis';
 import { ViewEmployers } from './components/ViewEmployers';
+import { AlumniPasswordUpdate } from './components/AlumniPasswordUpdate';
 
 
 
@@ -28,13 +29,15 @@ function App() {
         <Route path="/employlogin" exact element={ <LoginEmployer/> } />
         <Route path='/adminhome' exact element={ <Adminhome/> } />
         <Route path='/pendingemployer' exact element={ <Pendingemploy/> } />
-        <Route path='/alumni' exact element={ <AlumniRegister/> } />
+        <Route path='/alumniregister' exact element={ <AlumniRegister/> } />
         <Route path='/pendingalumni' exact element={ <PendingAlumni/> } />
         <Route path="/alumnilogin" exact element={<AlumniLogin/>}/>
         <Route path="/alumniprofile" exact element={<AlumniProfile/>}/>
         <Route path="/editprofile" exact element={<Editprofile/>}/>
         <Route path="/viewalumni" exact element={<ViewAlumnis/>}/>
         <Route path="/viewemployer" exact element={<ViewEmployers/>}/>
+        <Route path="/alumnipasswordupdate" exact element={<AlumniPasswordUpdate/>}/>
+
 
        </Routes>
       </BrowserRouter>

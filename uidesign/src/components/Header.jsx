@@ -5,8 +5,8 @@ export const Header = () => {
   return (
     <div className='md-3'>
 
-        <nav className="navbar navbar-expand-lg bg-dark fixed-top">
-    <div className="container-fluid">
+        <nav className="navbar navbar-expand-lg bg-dark fixed-top md-5">
+    <div className="container-fluid m-0">
     
      
       
@@ -26,6 +26,9 @@ export const Header = () => {
           <li className="nav-item p-2">
             <a className="nav-link text-white" href="/employsignup">Post a Job/Employer</a>
           </li>
+
+          
+          
           
         </ul>
        

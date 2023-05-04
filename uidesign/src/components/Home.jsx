@@ -22,8 +22,8 @@ export const Home = () => {
       
       {data.map(
           (user)=>{
-            return <div className="card">
-            <div className="card text-bg-primary mb-3" style={{float: 'left'}}>
+            return <div className="card mt-5 pt-5">
+            <div className="card text-bg-primary mt-3" style={{float: 'left'}}>
             <div className="card-header">{user.titleofrole}</div>
             <div className="card-body">
               <h5 className="card-title">Primary card title</h5>
@@ -37,7 +37,6 @@ export const Home = () => {
         )
       }
  
- <Footer />
 {/* <div className="card text-bg-secondary mb-3" style={{float: 'left'}}>
             <div className="card-header"></div>
             <div className="card-body">
@@ -88,7 +87,7 @@ export const Home = () => {
             </div>
           </div> */}
           
-          
+          <Footer />
 
 </div>
 

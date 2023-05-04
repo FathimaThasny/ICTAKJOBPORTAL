@@ -39,7 +39,7 @@ a{
 /* post a job-soorya */
 .container{
   margin-top: 100px;
-  
+  margin-bottom: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,5 +65,11 @@ footer >p{
 /* Home-soorya */
 .card{
   margin-top: 100px;
+  margin-bottom: 100px;
 }
 /* Home-soorya ends here*/
+
+
+
+  
+

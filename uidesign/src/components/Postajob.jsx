@@ -62,17 +62,17 @@ export const Postajob = () => {
                 </div>
                 <div className="dropdown col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Job Type</label>
-                    <select className="form-control" >
-                    <option class="dropdown-item" value="">Select..</option>
-                        <option class="dropdown-item" value="Full-time">Full-time</option>
-                        <option class="dropdown-item" value="Part-time">Part-time</option>
-                        <option class="dropdown-item" value="Internship">Internship</option>
+                    <select className="form-control" onChange={changeMyData} name='jobtype'>
+                    <option class="dropdown-item" >Select..</option>
+                        <option className="dropdown-item" value="Full-time">Full-time</option>
+                        <option className="dropdown-item" value="Part-time">Part-time</option>
+                        <option className="dropdown-item" value="Internship">Internship</option>
                     </select>
                 </div>
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
-                    <label htmlFor="" className="form-label">Skills</label>
+                    <label htmlFor="" className="form-label">Field</label>
                    
-                    <form >
+                    {/* <form >
                         <Select
                         options={options}
                         onChange={handleChange}
@@ -85,10 +85,10 @@ export const Postajob = () => {
                             })
                           }}
                         />
-                    </form>
+                    </form> */}
                     
                     
-                    {/* <input type="text" onChange={changeMyData} name="field" className="form-control" /> */}
+                    <input type="text" onChange={changeMyData} name="field" className="form-control" />
                 </div>
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Company Email</label>
