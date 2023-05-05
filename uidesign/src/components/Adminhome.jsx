@@ -9,17 +9,17 @@ export const Adminhome = () => {
     <div>
       <HeaderAdmin/>
       <div className='container'>
-        <div className="row justify-content-center">
-          <div className="col-md-6">
+        <div className="row justify-content-center m-0 w-75 h-75 g-5">
+          <div className="col col-md-5">
             <div className="card d-flex flex-column" style={{width: "50%"}}>
               <div className="card-body">
-                <h5 className="card-title">Verify Employer</h5>
+                <h5 className="card-title">Verify <br /> Employer</h5>
                 <p className="card-text">List of Employers that are Registered to, and waiting for Confirmation</p>
                 <a href="/pendingemployer" className="btn btn-primary">View List</a>
               </div>
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-5">
             <div className="card d-flex flex-column" style={{width: "50%"}}>
               <div className="card-body">
                 <h5 className="card-title">Verify Candidate</h5>
@@ -28,7 +28,7 @@ export const Adminhome = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-5">
             <div className="card d-flex flex-column" style={{width: "50%"}}>
               <div className="card-body">
                 <h5 className="card-title">View All Candidate</h5>
@@ -37,7 +37,7 @@ export const Adminhome = () => {
               </div>
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-5 ">
             <div className="card d-flex flex-column" style={{width: "50%"}}>
               <div className="card-body">
                 <h5 className="card-title">View All Employers</h5>

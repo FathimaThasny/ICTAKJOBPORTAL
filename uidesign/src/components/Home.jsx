@@ -18,13 +18,13 @@ export const Home = () => {
   }, []);
 
   return (
-    <div className='root mt-5 pt-5'>
+    <div className='container mt-5 pt-5'>
         <Header />
-      <section className="listContainer fleft mx-5 p-5">
-        <div className="list ">
+      <section className="row listContainer fleft mx-5 p-5">
+        <div className="row list ">
       {data.map(
           (user)=>{
-            return <article className='jobTuple bg-light border-0 rounded-5 w-100 h-100 shadow p-3' key={user._id}>
+            return <article className='col jobTuple bg-light border-0 rounded-5 w-100 h-100 shadow m-3 p-3' key={user._id}>
               <div className="jobTupleHeader">
                 <div className="info fleft ">
                   <h4 className="title ellipsis">{user.titleofrole}</h4>
@@ -34,29 +34,29 @@ export const Home = () => {
                 </div>
                 <ul className='details p-0 m-0'>
                   <li className="fleft br2 placeHolderLi experience ">
-                  <i className="bi bi-briefcase fleft"></i>
+                  <i className="bi bi-briefcase fleft pe-1"></i>
                   <span className="ellipsis fleft">{user.experience}</span>
-                  <span className="seperator"></span>
+                  <span className="seperator ms-2">|</span>
                   </li>
                   <li className="fleft br2 placeHolderLi salary px-2">
-                  <i className="bi bi-currency-rupee fleft"></i>
+                  <i className="bi bi-currency-rupee fleft pe-1"></i>
                   <span className="ellipsis fleft">{user.salary}</span>
-                  <span className="seperator"></span>
+                  <span className="seperator transparent ms-2">|</span>
                   </li>
-                  <li className="fleft br2 placeHolderLi place px-2">
-                  <i className="bi bi-geo-alt fleft"></i>
+                  <li className="fleft br2 placeHolderLi place px-1">
+                  <i className="bi bi-geo-alt fleft pe-1"></i>
                   <span className="ellipsis fleft">{user.place}</span>
-                  <span className="seperator"></span>
+                  {/* <span className="seperator ms"">|</span> */}
                   </li>
                 </ul>
                 </div>
                 <div className="ellipsis description fleft mb-2">
-                <i className="bi bi-card-text"></i>
+                <i className="bi bi-card-text pe-2"></i>
                 {user.description}
                 </div>
                 <div className="jobFooter mt-2 py-3">
-                  <div className="fleft">{user.createdAt}</div>
-                  <button className='btn btn-primary fright'>Apply</button>
+                  <div className="fleft mt-2 pt-3">{user.createdAt}</div>
+                  <button className='btn btn-primary fright mt-2 align-items-center'>Apply</button>
                 </div>
               
             </article>

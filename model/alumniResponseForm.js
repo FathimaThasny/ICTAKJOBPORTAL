@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const alumniResponseSchema = new mongoose.Schema({
-    first_name: {
+    name: {
         type: String
     },
-    last_name: {
-        type: String
-    },
+    // l: {
+    //     type: String
+    // },
     email: {
         type: String
     },
@@ -18,7 +18,8 @@ const alumniResponseSchema = new mongoose.Schema({
     },
     skill: {
         type: String
-    }
+    },
+    jobpostid: String
 });
 const alumniResponseModel = mongoose.model(
     "alumniResponseModel", alumniResponseSchema
