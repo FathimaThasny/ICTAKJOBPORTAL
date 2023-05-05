@@ -6,7 +6,7 @@ const { employeeModel } = require('./model/employee')
 const { jobModel } = require('./model/jobpost')
 const {alumniAddModel} = require('./model/alumniAddModel');
 const { alumniResponseModel } = require('./model/alumniResponseForm');
-
+const jwt = require("jsonwebtoken")
 const app = express()
 
 app.use(cors())
@@ -40,7 +40,17 @@ app.post('/api/addemployee', async(req,res)=>{
 app.post('/api/viewemployee', async(req,res)=>{
 
     let data = await employeeModel.find()
-    res.json(data)
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+            res.json(data)
+
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
 
 })
 
@@ -49,7 +59,18 @@ app.post('/api/viewemployee', async(req,res)=>{
 app.post('/api/editemployee', async(req,res)=>{
 
     let data = await employeeModel.findOneAndUpdate({"_id":req.body._id},req.body)
-    res.json({status : 'Data Updated'})
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            res.json({status : 'Data Updated'})
+
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
 
 })
 
@@ -58,7 +79,18 @@ app.post('/api/editemployee', async(req,res)=>{
 app.post('/api/deleteemployee', async(req,res)=>{
 
     let data = await employeeModel.findByIdAndDelete(req.body)
-    res.json({status : 'Data Deleted'})
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            res.json({status : 'Data Deleted'})
+
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
 
 })
 
@@ -69,7 +101,19 @@ app.post('/api/pendingemployer',async(req, res)=>{
     let data = await employeeModel.find()
     console.log("first")
     let newarray = data.filter(item=> item.confirmed===false)
-    res.json(newarray)
+
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            res.json(newarray)
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
+    
 })
 
 //----------view alumni conformation--------
@@ -78,7 +122,17 @@ app.post('/api/pendingalumni',async(req, res)=>{
     let data = await alumniAddModel.find()
     console.log("first")
     let newarray = data.filter(item=>item.confirmed===false)
-    res.json(newarray)
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            res.json(newarray)
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
 })
 
 //-----------verifying employer----------
@@ -144,8 +198,19 @@ app.post('/api/employlogin',async(req,res)=>{
 
     if(mail === "ictakadmin@gmail.com"){
         if(password === "ICT@admin2023"){
-            res.json({status : 'Login Successful as ADMIN'})
+            jwt.sign({email:mail,id:"admin"},"ictakjob",{expiresIn:"1d"},
+            (err,token)=>{
+                console.log("token generating")
+                if(err){
+                    res.json({status:"Token not generated"})
+                }
+                else{
+                     res.json({status : 'Login Successful as ADMIN'})
+                     console.log(token)
             console.log("inside admin")
+                }
+        })
+            
         }
         else{
             res.json({status:"Password Incorrect"})
@@ -168,9 +233,17 @@ app.post('/api/employlogin',async(req,res)=>{
            
           }
         else if(user.password===password){
+            jwt.sign({email:mail,id:user._id},"ictakjob",{expiresIn:"1d"},
+            (err,token)=>{
+                console.log("token generating")
+                if(err){
+                    res.json({msg:"Token not generated"})
+                }
+                else{
             res.json({msg:"login successful"})
-            
-            
+            console.log(token)
+                }
+            })            
         }else{
             res.json({msg:"login failed"})
         }}catch(error){
@@ -189,8 +262,19 @@ app.post('/api/employlogin',async(req,res)=>{
 app.post('/api/newjobpost',async(req,res)=>{
     let data =new jobModel(req.body)
     console.log(data)
-    data.save()
-    res.json({status:"Success"})
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            data.save()
+            res.json({status:"Success"})
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
+   
 })
 
 
@@ -204,14 +288,34 @@ app.post('/api/viewalljobs', async(req,res)=>{
 //----------------------delete a job-------------
 app.post('/api/deletejob', async (req,response)=>{
     let data=await jobModel.findByIdAndDelete
-    response.json({status : "Job Deleted"})
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            response.json({status:"Job Deleted"})
+        }
+        else{
+            response.json({status : "Unauthorized User"})
+        }
+    }
+    )
 })
 
 
 //update job posting
 app.post('/api/updatejob',async (req,res)=>{
     let data=await jobModel.findOneAndUpdate({"id":req.body.id}, req.body)
-    res.json(data)
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            res.json(data)
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
 })
 
 
@@ -232,7 +336,17 @@ app.post('/api/alumniregister',async(req,res)=>{
 app.post('/api/viewalumni', async(req,res)=>{
 
     let data = await alumniAddModel.find()
-    res.json(data)
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            res.json(data)
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
 
 })
 
@@ -240,7 +354,17 @@ app.post('/api/viewalumni', async(req,res)=>{
 app.post('/api/deletealumni', async(req,res)=>{
 
     let data = await alumniAddModel.findByIdAndDelete(req.body)
-    res.json({status : 'Data Deleted'})
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            res.json({status : 'Data Deleted'})
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
 })
 
 // <<<<<<< HEAD
@@ -271,9 +395,18 @@ app.post('/api/alumnilogin',async(req,res)=>{
            
           }
         else if(data.password===password){
+            jwt.sign({email:email,id:data._id},"ictakjob",{expiresIn:"1d"},
+            (error,token)=>{
+                console.log("token generating")
+                if(error){
+                    res.json({msg:"Token not generated"})
+                }
+                else{
             res.json({msg:"login successful"})
-            console.log("hai")
-            
+            console.log(token)
+                }
+            }
+            )
             
         }else{
             res.json({msg:"login failed"})
