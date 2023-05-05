@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import Select from "react-select";
+import { Headeremployer } from './Headeremployer'
 
 
 export const Postajob = () => {
@@ -26,23 +27,51 @@ export const Postajob = () => {
             navigate('/home')
         })
     }
-    const options = [
-        { value: "React", label: "React" },
-        { value: "Vue", label: "Vue" },
-        { value: "Angular", label: "Angular" },
-        { value: "Java", label: "Java" }
-      ];
+    // const options = [
+    //     { value: "React", label: "React" },
+    //     { value: "Vue", label: "Vue" },
+    //     { value: "Angular", label: "Angular" },
+    //     { value: "HTML/CSS", label: "HTML/CSS" },
+    //     { value: "Java", label: "Java" },
+    //     { value: "C#", label: "C#" },
+    //     { value: "C++", label: "C++" },
+    //     { value: "NodeJS", label: "NodeJS" },
+    //     { value: "MongoDB", label: "MongoDB" },
+    //     { value: "Kotlin", label: "Kotlin" },
+    //     { value: "Selenium", label: "Selenium" },
+    //     { value: "Swift", label: "Swift" },
+    //     { value: "PHP", label: "PHP" },
+    //     { value: "Javascript", label: "Javascript" },
+    //     { value: "Python", label: "Python" },
+    //     { value: "TypeScript", label: "TypeScript" },
+    //     { value: "Appium", label: "Appium" },
+    //     { value: "Tricentis Tosca", label: "Tricentis Tosca" },
+    //     { value: "Julia", label: "Julia" },
+    //     { value: "Scala", label: "Scala" },
+    //     { value: "Lisp", label: "Lisp" },
+    //     { value: "Fortran", label: "Fortran" },
+    //     { value: "Prolog", label: "Prolog" },
+    //     { value: "Python", label: "Python" },
+    //     { value: "Smalltalk", label: "Smalltalk" },
+    //     { value: "MATLAB", label: "MATLAB" },
+    //     { value: "Dart", label: "Dart" },
+    //     { value: "MATLAB", label: "MATLAB" },
+    //     { value: "C", label: "C" },
+    //     { value: "SQL", label: "SQL" },
+    //     { value: "SAS", label: "SAS" },
+
+    //   ];
       
-        const [skills, setSkills] = useState([]);
+        // const [skills, setSkills] = useState([]);
       
-        const handleChange = (skills) => {
-          setSkills(skills || []);
-        };
+        // const handleChange = (skills) => {
+        //   setSkills(skills || []);
+        // };
     
         return (
 
         <div>            
-            <Header/>
+            <Headeremployer/>
         
         <div className="container">
         <form className="form p-5">
@@ -72,7 +101,7 @@ export const Postajob = () => {
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Skills</label>
                    
-                    <form >
+                    {/* <form >
                         <Select
                         options={options}
                         onChange={handleChange}
@@ -85,10 +114,10 @@ export const Postajob = () => {
                             })
                           }}
                         />
-                    </form>
+                    </form> */}
                     
                     
-                    {/* <input type="text" onChange={changeMyData} name="field" className="form-control" /> */}
+                    <input type="text" onChange={changeMyData} name="field" className="form-control" />
                 </div>
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Company Email</label>

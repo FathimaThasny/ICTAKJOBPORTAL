@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import { Headeremployer } from './Headeremployer';
 
 export const Home = () => {
     const ApiUrl = "http://localhost:1000/api/viewalljobs"
@@ -18,7 +19,7 @@ export const Home = () => {
 
   return (
     <div>
-        <Header />
+        <Headeremployer />
       
       {data.map(
           (user)=>{
