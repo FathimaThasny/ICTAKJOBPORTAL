@@ -52,7 +52,6 @@ export const Pendingemploy = () => {
       let pswdgenrated = genPassword()
       console.log(pswdgenrated)
       // console.log(event)
-      // console.log(event.confirmed)
       console.log("setting data")
       const input = {
         "_id": id,

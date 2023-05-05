@@ -11,7 +11,7 @@ export const AlumniProfile = () => {
         axios.post(apiUrl) 
           .then((response) => {
             setData(response.data);
-            console.log(response.data);
+            // console.log(response.data);
           })
           .catch(error => console.error(error));
       }, []);

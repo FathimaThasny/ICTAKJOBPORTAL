@@ -17,7 +17,7 @@ export const AlumniResponseForm = () => {
       })
   }  
   const buttonClickEvent=()=>{
-    console.log(input)
+    // console.log(input)
     axios.post(apiUrl, {...input}).then(
       (response)=>{
         console.log(response.data) 

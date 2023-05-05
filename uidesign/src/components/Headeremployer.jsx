@@ -39,7 +39,7 @@ export const Headeremployer = () => {
                     </button>
                     <ul classNameName="dropdown-menu dropdown-menu-end">
                         <li><a className="dropdown-item" onClick={clickEdit} href="Editprofile">Edit Profile</a></li>
-                        <li><a className="dropdown-item" href="#">Log out</a></li>
+                        <li><a className="dropdown-item" href="/home">Log out</a></li>
                       
                     </ul>
                     </div>

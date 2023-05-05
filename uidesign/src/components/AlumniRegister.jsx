@@ -17,7 +17,7 @@ export const AlumniRegister = () => {
         })
     }
     const buttonClickEvent=()=>{
-        console.log(input)
+        // console.log(input)
         axios.post(apiUrl, {...input, course: selectedCourse, batch: selectedBatch, placementStatus: selectedPlacementStatus}).then(
           (response)=>{
             console.log(response.data) 

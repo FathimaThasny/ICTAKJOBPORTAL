@@ -46,7 +46,6 @@ export const Home = () => {
                   <li className="fleft br2 placeHolderLi place px-1">
                   <i className="bi bi-geo-alt fleft pe-1"></i>
                   <span className="ellipsis fleft">{user.place}</span>
-                  {/* <span className="seperator ms"">|</span> */}
                   </li>
                 </ul>
                 </div>

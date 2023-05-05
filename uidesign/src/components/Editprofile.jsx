@@ -57,7 +57,7 @@ export const Editprofile = () => {
                     <input name='website' type="text" className="form-control" onChange={changeData}/>
                 </div>
                 <div className="col col-6 col-sm-6 col-md-6 col-lg-06 col-xl-06 col-xxl-06 mt-3">
-                    <label htmlFor="" className="form-label">Address</label>
+                    <label className="form-label">Address</label>
                     <textarea name='adress' className="form-control" onChange={changeData}/>
                 </div>
                 <div className="col col-6 col-sm-6 col-md-6 col-lg-06 col-xl-06 col-xxl-06 mt-3">

@@ -11,6 +11,7 @@ export const ViewEmployers = () => {
   useEffect(()=>{
     axios.post(apiUrl).then(
       (response) =>{
+        console.log(response)
         setData(response.data)
     }
     )

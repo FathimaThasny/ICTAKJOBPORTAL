@@ -11,7 +11,6 @@ export const Header = () => {
      
       
       <img src={logo} alt="logo"/>
-         {/* <li ><a className="navbar-brand" href="/home">ICT Academy</a></li> */}
          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>

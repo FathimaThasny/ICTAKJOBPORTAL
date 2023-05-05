@@ -5,6 +5,10 @@ import { Footer } from './Footer'
 
 
 export const Adminhome = () => {
+
+  const clickLogin = ()=>{
+    
+  }
   return (
     <div>
       <HeaderAdmin/>
@@ -42,7 +46,7 @@ export const Adminhome = () => {
               <div className="card-body">
                 <h5 className="card-title">View All Employers</h5>
                 <p className="card-text">List of all Employers that are Registered to the site</p>
-                <a href="/viewemployer" className="btn btn-primary">View List</a>
+                <a href="/viewemployer" className="btn btn-primary" onClick={clickLogin()}>View List</a>
               </div>
             </div>
           </div>

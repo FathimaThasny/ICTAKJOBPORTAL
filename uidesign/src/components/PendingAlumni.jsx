@@ -48,7 +48,6 @@ export const PendingAlumni = () => {
    const verifyData = (id,name,email,phone,qualification,course,batch,placementStatus,company)=>{
     let pswdgenrated = genPassword()
     console.log(pswdgenrated)
-    // console.log(event)
     // console.log(event.confirmed)
     console.log("setting data")
     const input = {

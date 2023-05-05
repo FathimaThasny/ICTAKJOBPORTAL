@@ -67,7 +67,6 @@ export const LoginEmployer = () => {
                                     <h4>Employer SignIn</h4>
                                     <p className="mb-3">to access the portal</p>
                                     <div className='datafields'>
-                                        {/* <input type="hidden" name="_token" value="FsQNRKX5A5OxZeeblXZMhpJyCeFYEocNCWXGugpw">                                        */}
                                         <div className="form-group p-2 ">
                                             <input type="text" className="form-control" placeholder="Email" name="personalmail"  min="8" onChange={changeData}/>
                                         </div>

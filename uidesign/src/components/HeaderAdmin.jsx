@@ -4,7 +4,7 @@ import logo from '../images/logosmall.png';
 
 export const HeaderAdmin = () => {
   return (
-<div className='md-3'>
+<div className='md-2'>
 
 <nav className="navbar navbar-expand-lg bg-dark fixed-top md-5">
 <div className="container-fluid m-0">

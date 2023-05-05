@@ -23,7 +23,7 @@ export const AlumniLogin = () => {
           console.log(response)
           if(response.data.msg === "login successful"){
               // const token = response.data.token
-              // console.log(response.data.data)
+              console.log(response.data.data)
               // const userId = response.data.data._id
               // let role = response.data.data.role
 

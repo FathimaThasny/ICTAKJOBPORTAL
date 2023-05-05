@@ -39,8 +39,6 @@ function App() {
         <Route path="/viewemployer" exact element={<ViewEmployers/>}/>
         <Route path="/alumnipasswordupdate" exact element={<AlumniPasswordUpdate/>}/>
         <Route path="/alumniresponseform" exact element={<AlumniResponseForm/>}/>
-
-
        </Routes>
       </BrowserRouter>
     </div>

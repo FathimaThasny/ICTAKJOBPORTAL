@@ -26,6 +26,7 @@ export const ViewAlumnis = () => {
      axios.post(deleteApi,element)
      .then(response=>{
             console.log(response)
+            console.log("first")
             if(response.data.status=== 'Data Deleted'){
                 window.location.reload(true)
             }

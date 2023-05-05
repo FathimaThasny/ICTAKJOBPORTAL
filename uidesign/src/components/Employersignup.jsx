@@ -35,16 +35,7 @@ export const Employersignup = () => {
         <div className="container">
         <form className="form p-5">
         <div className="row g-3">
-                {/* <h1 className="heading fw-Bolder">EMPLOYEE APP</h1> */}
-                {/* <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 g-3"> */}
-                {/* <div className="form-check form-check-inline">
-                   <input className="form-check-input" type="radio" name="role" id="inlineRadio1" value="user" onClick={changeData} ></input>
-                   <label className="form-check-label" for="inlineRadio1">USER</label>
-                </div>
-                <div className="form-check form-check-inline">
-                   <input className="form-check-input" type="radio" name="role" id="inlineRadio2" value="admin" onClick={changeData}></input>
-                   <label className="form-check-label" for="inlineRadio2">ADMIN</label>
-                </div> */}
+                
                 <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-2">
 
                     <label htmlFor="" className="form-label">Company Name</label>

@@ -201,7 +201,7 @@ app.post('/api/viewalljobs', async(req,res)=>{
 })
 
 
-//delete a job
+//----------------------delete a job-------------
 app.post('/api/deletejob', async (req,response)=>{
     let data=await jobModel.findByIdAndDelete
     response.json({status : "Job Deleted"})
