@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom'
 export const ViewEmployers = () => {
   const apiUrl = "http://localhost:1000/api/viewemployee"
   const deleteApi = "http://localhost:1000/api/deleteemployee"
+  const [usertoken,settoken] = useState(sessionStorage.getItem("userToken"))
+
 
   const [data,setData] = useState([])
 
   useEffect(()=>{
-    axios.post(apiUrl).then(
+    axios.post(apiUrl,{"token": usertoken}).then(
       (response) =>{
         console.log(response)
         setData(response.data)
@@ -20,7 +22,8 @@ export const ViewEmployers = () => {
 
   const clickDelete = (event) =>{
     const element = {
-        "_id" : event.target.value
+        "_id" : event.target.value,
+        "token": usertoken
     }
     console.log(element)
      axios.post(deleteApi,element)

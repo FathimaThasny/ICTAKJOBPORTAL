@@ -141,12 +141,24 @@ app.post('/api/verifyemployer', async(req,res)=>{
     let data = await employeeModel.findOneAndUpdate({"_id":req.body._id},req.body)
     console.log("data in server")
     console.log(data)
-    sendConfirmationEmail(
-        data.personname,
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            sendConfirmationEmail(
+                data.personname,
         data.personalmail,
         data.password
- );
- res.json({status : 'Account Verified'})
+         );
+         res.json({status : 'Account Verified'})        
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
+    
+
 })
 
 //------------verifying alumni------------
@@ -155,12 +167,22 @@ app.post('/api/verifyalumni', async(req,res)=>{
     let data = await alumniAddModel.findOneAndUpdate({"_id":req.body._id},req.body)
     console.log("data in server")
     console.log(data)
-    sendConfirmationEmail(
-        data.name,
-        data.email,
-        data.password
- );
- res.json({status : 'Account Verified'})
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            sendConfirmationEmail(
+                data.name,
+                data.email,
+                data.password
+         );
+         res.json({status : 'Account Verified'})        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
+    
 })
 
 //----------------mail using nodemailer------------------
@@ -370,8 +392,18 @@ app.post('/api/deletealumni', async(req,res)=>{
 // <<<<<<< HEAD
 //--------------selecting one alumni----------
 app.post('/api/selectAlumni',async(req,res)=>{
-    let data = await alumniAddModel.findOne(req.body)
-    res.json(data)
+    let data = await alumniAddModel.findById(req.body)
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            res.json(data)
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
 })
 
 //-------------- alumni login----------
@@ -425,23 +457,56 @@ app.post('/api/alumnilogin',async(req,res)=>{
 app.post('/api/alumniupdatepassword', async(req,res)=>{
     console.log(req.body._id)
     let data=await alumniAddModel.findOneAndUpdate({"id":req.body.id}, req.body)
-    res.json(data)
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            // res.json(data)
+            res.json({status : "Password Updated"})
+
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
 
 })
 
 // ----------------------alumniResponseModel-------------------
 app.post('/api/alumniresponseform',async(req,res)=>{
     let data =await new alumniResponseModel(req.body)
-    data.save()
-    res.json({status : 'response Added '})
-    console.log(data)
-    console.log("Alumni Response Added")
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            data.save()
+            res.json({status : 'response Added '})
+            console.log(data)
+            console.log("Alumni Response Added")        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
+    
 
 })
 // ----------------------------view alumniResponseModel---------
 app.post('/api/viewalumniresponseform', async(req,res)=>{
 
     let data = await alumniResponseModel.find()
-    res.json(data)
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            res.json(data)
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
+    // res.json(data)
 
 })

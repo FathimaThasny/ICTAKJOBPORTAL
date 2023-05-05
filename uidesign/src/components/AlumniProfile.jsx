@@ -3,12 +3,18 @@ import axios from 'axios';
 
 export const AlumniProfile = () => {
 
-    const apiUrl = "http://localhost:1000/api/viewalumni"
+    const apiUrl = "http://localhost:1000/api/selectAlumni"
     const[data, setData]=useState([])
-   
+    const [usertoken,settoken] = useState(sessionStorage.getItem("userToken"))
+    const [userid,setuserid] = useState(sessionStorage.getItem("userId"))
+
    
     useEffect(() => {
-        axios.post(apiUrl) 
+      let data ={
+        "userId" : userid,
+       "token" : usertoken
+      }
+        axios.post(apiUrl,data) 
           .then((response) => {
             setData(response.data);
             // console.log(response.data);

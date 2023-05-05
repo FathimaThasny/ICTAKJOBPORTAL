@@ -9,8 +9,6 @@ export const AlumniResponseForm = () => {
   
   const [input,setInput]=useState({})
 
-
-
   const changeMyData=(event)=>{
       setInput({
           ...input,[event.target.name]:event.target.value

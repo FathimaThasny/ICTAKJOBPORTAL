@@ -17,18 +17,18 @@ code {
 /* header css-soorya */
 
 a{
-  color: white;
+  color:black !important;
 }
 .nav-link{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   
   
 }
 
 .nav-item a:hover{
-  background-color: teal;
-  color: black !important;
+  /* background-color: teal; */
+  color: rgb(18, 216, 238) !important;
  
 }
 #logo{

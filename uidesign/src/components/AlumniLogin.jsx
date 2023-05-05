@@ -22,18 +22,18 @@ export const AlumniLogin = () => {
       .then(response =>{
           console.log(response)
           if(response.data.msg === "login successful"){
-              // const token = response.data.token
+              const token = response.data.token
               console.log(response.data.data)
-              // const userId = response.data.data._id
-              // let role = response.data.data.role
+              const userId = response.data.data._id
+              let role = "alumni"
 
-              // console.log(role)
+              console.log(role)
 
-              // sessionStorage.setItem("userToken",token)
-              // sessionStorage.setItem("userId",userId)
-              // sessionStorage.setItem("role",role)
+              sessionStorage.setItem("userToken",token)
+              sessionStorage.setItem("userId",userId)
+              sessionStorage.setItem("role",role)
               console.log("alumni")
-              navigate("/home")
+              navigate("/")
        
           }else{
               alert("Invalid Credentials")
@@ -61,7 +61,7 @@ export const AlumniLogin = () => {
                             </div>
                             <div className="col col-sm-8">
                                 <div className="p-4 d-grid gap-2">
-                                    <h4>Student SignIn</h4>
+                                    <h4>Candidate SignIn</h4>
                                     <p className="mb-3">to access the portal</p>
                                     <div className='datafields'>
                                         {/* <input type="hidden" name="_token" value="FsQNRKX5A5OxZeeblXZMhpJyCeFYEocNCWXGugpw">                                        */}

@@ -8,11 +8,13 @@ export const Pendingemploy = () => {
     const deleteApi = "http://localhost:1000/api/deleteemployee"
     const verificationApi = "http://localhost:1000/api/verifyemployer"
     const [data,setData] = useState([])
+    const [usertoken,settoken] = useState(sessionStorage.getItem("userToken"))
+
     // const [input,setInput] = useState({})
 
 
     useEffect(()=>{
-        axios.post(ApiUrl).then(
+        axios.post(ApiUrl,{"token": usertoken}).then(
             (response)=>{
                 console.log(response)
                 setData(response.data)
@@ -23,7 +25,8 @@ export const Pendingemploy = () => {
 
     const deleteData = (event)=>{
       const element = {
-        "_id" : event.target.value
+        "_id" : event.target.value,
+        "token": usertoken
       }
     console.log(element)
      axios.post(deleteApi,element)
@@ -67,7 +70,8 @@ export const Pendingemploy = () => {
         "designation": designation,
         "personalnumber": personalnumber,
         "confirmed":true,
-        "password":pswdgenrated
+        "password":pswdgenrated,
+        "token": usertoken
       }
       console.log("input")
       console.log(input)

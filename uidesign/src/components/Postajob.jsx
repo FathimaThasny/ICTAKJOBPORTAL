@@ -8,11 +8,16 @@ import { Footer } from './Footer'
 export const Postajob = () => {
 
     const [input,setinput]=useState({})
+    const [userid,setuserid] = useState(sessionStorage.getItem("userId"))
+    const [usertoken,settoken] = useState(sessionStorage.getItem("userToken"))
+
     const navigate = useNavigate()
 
     const changeMyData=(e)=>{
       setinput({
-         ...input,[e.target.name]:e.target.value
+         ...input,[e.target.name]:e.target.value,
+         "userId": userid,
+        "token": usertoken
       })
     }
     const post=()=>{
@@ -22,7 +27,7 @@ export const Postajob = () => {
         .then(response=>{
             console.log(input)
             alert("Job posted")
-            navigate('/home')
+            navigate('/')
         })
     }
     // const options = [

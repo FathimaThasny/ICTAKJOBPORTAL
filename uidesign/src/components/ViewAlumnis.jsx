@@ -6,11 +6,13 @@ export const ViewAlumnis = () => {
 
   const apiUrl = "http://localhost:1000/api/viewalumni"
   const deleteApi = "http://localhost:1000/api/deletealumni"
+  const [usertoken,settoken] = useState(sessionStorage.getItem("userToken"))
+
 
   const [data,setData] = useState([])
 
   useEffect(()=>{
-    axios.post(apiUrl).then(
+    axios.post(apiUrl,{"token": usertoken}).then(
       (response) =>{
         setData(response.data)
     }
@@ -20,7 +22,8 @@ export const ViewAlumnis = () => {
 
   const clickDelete = (event) =>{
     const element = {
-        "_id" : event.target.value
+        "_id" : event.target.value,
+        "token": usertoken
     }
     console.log(element)
      axios.post(deleteApi,element)

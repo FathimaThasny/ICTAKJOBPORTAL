@@ -37,6 +37,10 @@ const jobSchema  =new Mongoose.Schema(
             type:String,
             required:true
         },
+        userId:{
+            type : Mongoose.Schema.ObjectId, 
+            ref : 'employeerecords'
+        },
         createdAt : {type: Date, default: Date.now}
 
     }

@@ -24,7 +24,7 @@ function App() {
       
       <BrowserRouter>
        <Routes>
-        <Route path="/home" exact element={ <Home/> } />
+        <Route path="/" exact element={ <Home/> } />
         <Route path="/postnewjob" exact element={ <Postajob/> } />
         <Route path="/employsignup" exact element={ <Employersignup/> } />
         <Route path="/employlogin" exact element={ <LoginEmployer/> } />

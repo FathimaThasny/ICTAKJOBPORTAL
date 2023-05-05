@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { HeaderAdmin } from './HeaderAdmin'
 import { Footer } from './Footer'
 
 
 
 export const Adminhome = () => {
+
+  const [usertoken,settoken] = useState(sessionStorage.getItem("userToken"))
+
+  useEffect(()=>{
+    if(!usertoken){
+      return console.error();
+    }
+  })
 
   const clickLogin = ()=>{
     

@@ -25,21 +25,33 @@ export const LoginEmployer = () => {
       .then(response =>{
           console.log(response)
           if(response.data.msg === "login successful"){
-              // const token = response.data.token
-              // console.log(response.data.data)
-              // const userId = response.data.data._id
-              // let role = response.data.data.role
+              const token = response.data.token
+              console.log(response.data.data)
+              const userId = response.data.data._id
+              let role = "employer"
 
-              // console.log(role)
+              console.log(role)
 
-              // sessionStorage.setItem("userToken",token)
-              // sessionStorage.setItem("userId",userId)
-              // sessionStorage.setItem("role",role)
+              sessionStorage.setItem("userToken",token)
+              sessionStorage.setItem("userId",userId)
+              sessionStorage.setItem("role",role)
               console.log("employe")
-              navigate("/home")
+              navigate("/postnewjob")
+
           }else if(response.data.status === "Login Successful as ADMIN"){
+            const token = response.data.token
+              console.log(response.data.data)
+            //   const userId = response.data.data._id
+              let role = "admin"
+
+              console.log(role)
+
+              sessionStorage.setItem("userToken",token)
+            //   sessionStorage.setItem("userId",userId)
+              sessionStorage.setItem("role",role)
             console.log("admin")
             navigate("/adminhome")
+            
           }
           else{
               alert("Invalid Credentials")
