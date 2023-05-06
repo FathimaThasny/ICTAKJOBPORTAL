@@ -43,18 +43,22 @@
 }
 
 #profile{
-position: absolute;
-top: 10px;
-right: 20px;
-height: 35px;
-width: 35px;
-/* left: auto;
-right: 0; */
-border-radius: 25%;
-}
-#profilebtn{
-background: transparent;
-border: none !important;
-
-}
+  /* position: absolute; */
+  top: 20px;
+  right: 20px;
+  height: 40px;
+  width: 40px;
+  /* left: auto;
+  right: 0; */
+  /* border-radius: 25%; */
+  
+  }
+  #profilebtn{
+  background: transparent;
+  border: none !important;
+  
+  }
+  .dropdown-item{
+    color: white;
+  }
 /*aswin css ends here*/
