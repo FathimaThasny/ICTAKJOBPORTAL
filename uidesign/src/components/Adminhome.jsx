@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { HeaderAdmin } from './HeaderAdmin'
 import { Footer } from './Footer'
+import { useNavigate } from 'react-router-dom'
+import { Header } from './Header'
 
 
 
 export const Adminhome = () => {
 
   const [usertoken,settoken] = useState(sessionStorage.getItem("userToken"))
+  const navigate = useNavigate()
 
   useEffect(()=>{
-    if(!usertoken){
-      return console.error();
+    let role = sessionStorage.getItem("role")
+    console.log(role)
+    if((role !== "admin")){
+      console.log("error")
+      navigate("/employlogin")
     }
   })
 
-  const clickLogin = ()=>{
-    
-  }
   return (
     <div>
-      <HeaderAdmin/>
+      <Header/>
       <div className='container'>
         <div className="row justify-content-center m-0 w-75 h-75 g-5">
           <div className="col col-md-5">
@@ -54,7 +57,7 @@ export const Adminhome = () => {
               <div className="card-body">
                 <h5 className="card-title">View All Employers</h5>
                 <p className="card-text">List of all Employers that are Registered to the site</p>
-                <a href="/viewemployer" className="btn btn-primary" onClick={clickLogin()}>View List</a>
+                <a href="/viewemployer" className="btn btn-primary">View List</a>
               </div>
             </div>
           </div>

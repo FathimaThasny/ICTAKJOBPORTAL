@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { HeaderAdmin } from './HeaderAdmin'
+import { Header } from './Header'
 
 export const Pendingemploy = () => {
 
@@ -87,7 +88,7 @@ export const Pendingemploy = () => {
 
   return (
     <div>
-      <HeaderAdmin/>
+      <Header/>
         <div className="card">
   <div className="card-header">
 Pending Requests  </div>

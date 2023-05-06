@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import profileicon from './img/profileicon.png'
 import{Headeremployer} from './Headeremployer'
+import { Header } from './Header'
 export const Editprofile = () => {
 
     const [input,setInput] = useState({})
@@ -64,77 +65,79 @@ export const Editprofile = () => {
         .then(response =>{
             console.log(response)
             alert(response.data.status)
-            navigate('/')
+            navigate('/postnewjob')
         })
     }
 
   return (
     <div>
-        <Headeremployer/>
-        <div className="container">
-            
-            <div className="row g-3">
+        <Header/>
+        <div className="container " >
+        <form className="form p-5">
+
+            <div className="row g-3" >
                 {/* <h1 className="heading fw-Bolder">EMPLOYEE APP</h1> */}
-                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 g-3">
                 
-                <div className="col col-6 col-sm-6 col-md-6 col-lg-06 col-xl-06 col-xxl-06 mt-3">
+                <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-3">
 
                     <label htmlFor="" className="form-label">Company Name</label>
-                    <input name='company' type="text" className="form-control" onChange={(e)=> setCompany(e.target.value)}/>
+                    <input name='company' type="text" value={company} className="form-control" onChange={(e)=> setCompany(e.target.value)}/>
                 </div>
                 <div className="col col-6 col-sm-6 col-md-6 col-lg-06 col-xl-06 col-xxl-06 mt-3">
                     <label htmlFor="" className="form-label">Company Email</label>
-                    <input name='companyemail' type="email" className="form-control" onChange={(e)=> setEmail(e.target.value)}/>
+                    <input name='companyemail' type="email" value={companyemail} className="form-control" onChange={(e)=> setEmail(e.target.value)}/>
                 </div>
                 <div className="col col-6 col-sm-6 col-md-6 col-lg-06 col-xl-06 col-xxl-06 mt-3">
                     <label htmlFor="" className="form-label">Official Website</label>
-                    <input name='website' type="text" className="form-control" onChange={(e)=> setWebsite(e.target.value)}/>
+                    <input name='website' type="text" value={website} className="form-control" onChange={(e)=> setWebsite(e.target.value)}/>
                 </div>
-                <div className="col col-6 col-sm-6 col-md-6 col-lg-06 col-xl-06 col-xxl-06 mt-3">
-                    <label className="form-label">Address</label>
-                    <textarea name='adress' className="form-control" onChange={(e)=> setAddress(e.target.value)}/>
-                </div>
+                
                 <div className="col col-6 col-sm-6 col-md-6 col-lg-06 col-xl-06 col-xxl-06 mt-3">
                     <label htmlFor="" className="form-label">District</label>
-                    <input name='district' type="text" className="form-control" onChange={(e)=> setDistrict(e.target.value)}/>
+                    <input name='district' type="text" value={district} className="form-control" onChange={(e)=> setDistrict(e.target.value)}/>
                 </div>
                 <div className="col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mt-3">
                     <label htmlFor="" className="form-label">State</label>
-                    <input name='state' type="text" className="form-control" onChange={(e)=> setState(e.target.value)}/>
+                    <input name='state' type="text" value={state} className="form-control" onChange={(e)=> setState(e.target.value)}/>
+                </div>
+                <div className="col col-6 col-sm-6 col-md-6 col-lg-06 col-xl-06 col-xxl-06 mt-3">
+                    <label className="form-label">Address</label>
+                    <textarea name='adress' value={address} className="form-control" onChange={(e)=> setAddress(e.target.value)}/>
                 </div>
                 <div className="col col-6 col-sm-6 col-md-6 col-lg-06 col-xl-06 col-xxl-06">
                     <label htmlFor="" className="form-label">Company Description </label>
-                    <textarea name='description' className="form-control" onChange={(e)=> setDiscription(e.target.value)}/>
+                    <textarea name='description' value={description} className="form-control" onChange={(e)=> setDiscription(e.target.value)}/>
                 </div>
                 <div className="col col-6 col-sm-6 col-md-6 col-lg-06 col-xl-06 col-xxl-06 mt-3">
                     <label htmlFor="" className="form-label">Contact Person's Name</label>
-                    <input name='personname' type="text" className="form-control" onChange={(e)=> setPersonname(e.target.value)}/>
+                    <input name='personname' type="text" value={personname} className="form-control" onChange={(e)=> setPersonname(e.target.value)}/>
                 </div>
                 <div className="col col-6 col-sm-6 col-md-6 col-lg-06 col-xl-06 col-xxl-06 mt-3">
                     <label htmlFor="" className="form-label">Contact Email</label>
-                    <input name='personalmail' type="email" className="form-control" onChange={(e)=> setPersonalmail(e.target.value)}/>
+                    <input name='personalmail' type="email" value={personalmail} className="form-control" onChange={(e)=> setPersonalmail(e.target.value)}/>
                 </div>
                 <div className="col col-6 col-sm-6 col-md-6 col-lg-06 col-xl-06 col-xxl-06 mt-3">
                     <label htmlFor="" className="form-label">Designation</label>
-                    <input name='designation' type="text" className="form-control" onChange={(e)=> setDesignation(e.target.value)}/>
+                    <input name='designation' type="text" value={designation} className="form-control" onChange={(e)=> setDesignation(e.target.value)}/>
                 </div>
                 <div className="col col-6 col-sm-6 col-md-6 col-lg-06 col-xl-06 col-xxl-06 mt-3">
                     <label htmlFor="" className="form-label">Contact Number</label>
-                    <input name='personalnumber' type="text" className="form-control" onChange={(e)=> setPersonalnumber(e.target.value)}/>
+                    <input name='personalnumber' type="text"value={personalnumber} className="form-control" onChange={(e)=> setPersonalnumber(e.target.value)}/>
                 </div>
                 
-                <div className="d-flex">
-                    <div className="col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1 mt-4">
-                        <button name="registerempbtn" onClick={clickUpdate} className="btn btn-success btn-hover">Update</button>
+                <div className="d-flex m-3 pt-4">
+                <div className="col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 fright">
+                        <button name="registerempbtn" onClick="/postnewjob" className="btn btn-warning btn-hover">Cancel</button>
                     </div>
-                    <div className="col col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 col-xxl-1 mt-4">
-                        <button name="registerempbtn" onClick="/home" className="btn btn-success btn-hover">Cancel</button>
+                    <div className="col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 fleft">
+                        <button name="registerempbtn" onClick={clickUpdate} className="btn btn-success btn-hover fleft">Update</button>
                     </div>
+                    
                 </div>
  
                 
             </div>
-            </div>
+            </form>
         </div>
     </div>
   )

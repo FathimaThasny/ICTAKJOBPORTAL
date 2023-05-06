@@ -1,7 +1,70 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../images/logosmall.png';
+import profileicon from './img/profileicon.png'
+import axios from 'axios';
+
 
 export const Header = () => {
+  const [visible,setVisible] = useState(true)
+  const [usertoken,settoken] = useState(sessionStorage.getItem("userToken"))
+  const [view,setView] = useState(true)
+  const [viewoption,setViewoption] = useState(true)
+  const [viewprofile,setViewprofile] = useState(true)
+  const [option,setOption] = useState(true)
+
+
+  useEffect(()=>{
+    let role = sessionStorage.getItem("role")
+    console.log(role)
+
+    if ((usertoken)&&(role === 'alumni'))
+        {
+            setVisible(true)
+        }
+        else{
+            setVisible(false)
+        }
+      if((usertoken) && ((role == 'employer') || (role === 'admin')))
+      {
+        setView(true)
+      }
+      else{
+        setView(false)
+        }
+        if((usertoken) && ((role === 'employer') || (role === 'alumni')))
+      {
+        setViewprofile(true)
+      }
+      else{
+        setViewprofile(false)
+        }
+        if((usertoken) && (role == 'admin'))
+      {
+        setViewoption(true)
+      }
+      else{
+        setViewoption(false)
+        }
+        if((usertoken) && ((role === 'employer') || (role === 'alumni') || (role === 'admin')))
+        {
+          setOption(false)
+        }
+        else{
+          setOption(true)
+          }
+
+  },[])
+
+  const apiURL="http://localhost:3000/api/getemployerdetails"
+    const clickEdit = () =>{
+        axios.get(apiURL)
+        .then(response =>{
+            console.log(response)
+       
+            
+        })
+    }
+
   return (
     <div className='md-3'>
 
@@ -17,13 +80,46 @@ export const Header = () => {
           <li className="nav-item p-2">
             <a className="nav-link active text-white" aria-current="page" href="/">Home</a>
           </li>
+          {visible &&
+          <li className="nav-item p-2">
+            <a className="nav-link active text-white" aria-current="page" href="/">Applied Jobs</a>
+          </li>}
           
+          {view &&
+          <li className="nav-item p-2">
+            <a className="nav-link text-white" href="/postnewjob">Post a Job</a>
+          </li>}
+          {view &&
+          <li className="nav-item p-2">
+            <a className="nav-link text-white" href="/alumnilogin">Posted Jobs</a>
+          </li>}
+          {view &&
+          <li className="nav-item p-2">
+            <a className="nav-link text-white" href="/">Notification</a>
+          </li>}
+          {viewprofile &&
+           <div class="btn-group">
+           <button class="btn btn-secondary ms-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <img id="profile" alt='' src={profileicon}/>
+           </button>
+         
+           <ul class="dropdown-menu dropdown-menu-end bg-dark">
+           <li><a className="dropdown-item" onClick={clickEdit} href="Editprofile">Edit Profile</a></li>
+          <li><a className="dropdown-item" href="/">Log out</a></li>
+           </ul>
+         </div>}
+          {viewoption &&
+          <li className="nav-item p-2">
+            <a className="nav-link text-white" href="/postnewjob">Logout</a>
+          </li>}
+          {option &&
           <li className="nav-item p-2">
             <a className="nav-link text-white" href="/alumnilogin">SignIn</a>
-          </li>
+          </li>}
+          {option &&
           <li className="nav-item p-2">
             <a className="nav-link text-white" href="/employlogin">Post a Job/Employer</a>
-          </li>
+          </li>}
 
           
           

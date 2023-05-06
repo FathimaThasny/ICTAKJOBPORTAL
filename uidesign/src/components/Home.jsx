@@ -2,10 +2,14 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
     const ApiUrl = "http://localhost:1000/api/viewalljobs"
   const [data,setData] =useState([])
+  const navigate = useNavigate()
+  const [usertoken,settoken] = useState(sessionStorage.getItem("userToken"))
+
 
   useEffect(() => {
     axios.post(ApiUrl).then(
@@ -17,9 +21,27 @@ export const Home = () => {
     )
   }, []);
 
+  const clickApply = ()=>{
+    console.log(usertoken)
+    let role = sessionStorage.getItem("role")
+console.log(role)
+    if((usertoken)&&(role === "alumni")){
+      navigate("/alumniresponseform")
+    }
+    else{
+      navigate("/alumnilogin")
+    }
+  }
+
   return (
     <div className='container mt-5 pt-5'>
         <Header />
+        <section className="row bgwhite fleft">
+          <div className="bgwhite br4 fleft">
+            <span className="allfilters fleft">All Filters</span>
+          </div>
+          <div className="bgwhitw"></div>
+        </section>
       <section className="row listContainer fleft mx-5 p-5">
         <div className="row list ">
       {data.map(
@@ -55,7 +77,7 @@ export const Home = () => {
                 </div>
                 <div className="jobFooter mt-2 py-3">
                   <div className="fleft mt-2 pt-3">{user.createdAt}</div>
-                  <button className='btn btn-primary fright mt-2 align-items-center'>Apply</button>
+                  <button className='btn btn-primary fright mt-2 align-items-center' onClick={clickApply}>Apply</button>
                 </div>
               
             </article>

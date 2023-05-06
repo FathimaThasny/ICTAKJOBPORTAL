@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { Header } from './Header'
 
 export const AlumniRegister = () => {
 
@@ -39,7 +40,7 @@ export const AlumniRegister = () => {
       
   return (
 <div >
-
+<Header/>
         <h1>Alumni Registration </h1>
         <div className="container">
         <div className="row">

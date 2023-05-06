@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Header } from './Header'
 
 export const ViewAlumnis = () => {
 
@@ -14,6 +15,7 @@ export const ViewAlumnis = () => {
   useEffect(()=>{
     axios.post(apiUrl,{"token": usertoken}).then(
       (response) =>{
+        console.log(response)
         setData(response.data)
     }
     )
@@ -52,7 +54,8 @@ const setUser=(id,name,email,phone,qualification,course,batch,placementStatus,co
 
   return (
     <div>
-      <table class="table table-striped table-hover table-bordered border-secondary">
+      <Header/>
+      <table className="table table-striped table-hover table-bordered border-secondary">
   <thead>
     <tr>
       <th scope="col">Sl No.</th>

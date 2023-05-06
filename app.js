@@ -227,7 +227,7 @@ app.post('/api/employlogin',async(req,res)=>{
                     res.json({status:"Token not generated"})
                 }
                 else{
-                     res.json({status : 'Login Successful as ADMIN'})
+                     res.json({status : 'Login Successful as ADMIN',token:token})
                      console.log(token)
             console.log("inside admin")
                 }
@@ -262,7 +262,7 @@ app.post('/api/employlogin',async(req,res)=>{
                     res.json({msg:"Token not generated"})
                 }
                 else{
-            res.json({msg:"login successful"})
+            res.json({msg:"login successful",token:token,data:user})
             console.log(token)
                 }
             })            
@@ -340,6 +340,27 @@ app.post('/api/updatejob',async (req,res)=>{
     )
 })
 
+//----------------employer password Update-------------
+app.post('/api/employupdatepassword', async(req,res)=>{
+    console.log("inside password Update")
+    console.log(req.body)
+
+    let data=await employeeModel.findOneAndUpdate({"id":req.body._id}, req.body)
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+           
+            // res.json(data)
+            res.json({status : "Password Updated"})
+
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
+
+})
 
 
 
@@ -356,12 +377,12 @@ app.post('/api/alumniregister',async(req,res)=>{
 
 //view Alumni
 app.post('/api/viewalumni', async(req,res)=>{
-
+try{
     let data = await alumniAddModel.find()
     jwt.verify(req.body.token,"ictakjob",
     (error,decoded)=>{
         if(decoded && decoded.email) {
-           
+           console.log("inside viewalumni")
             res.json(data)
         }
         else{
@@ -369,6 +390,9 @@ app.post('/api/viewalumni', async(req,res)=>{
         }
     }
     )
+}
+catch(err){
+}
 
 })
 
@@ -434,7 +458,7 @@ app.post('/api/alumnilogin',async(req,res)=>{
                     res.json({msg:"Token not generated"})
                 }
                 else{
-            res.json({msg:"login successful"})
+            res.json({msg:"login successful",token:token,data:data})
             console.log(token)
                 }
             }
@@ -455,8 +479,10 @@ app.post('/api/alumnilogin',async(req,res)=>{
 // ------------alumni update password-------------------
 
 app.post('/api/alumniupdatepassword', async(req,res)=>{
-    console.log(req.body._id)
-    let data=await alumniAddModel.findOneAndUpdate({"id":req.body.id}, req.body)
+    console.log("inside password Update")
+    console.log(req.body)
+
+    let data=await alumniAddModel.findOneAndUpdate({"id":req.body._id}, req.body)
     jwt.verify(req.body.token,"ictakjob",
     (error,decoded)=>{
         if(decoded && decoded.email) {

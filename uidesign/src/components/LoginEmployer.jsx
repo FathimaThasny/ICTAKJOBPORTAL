@@ -40,7 +40,7 @@ export const LoginEmployer = () => {
 
           }else if(response.data.status === "Login Successful as ADMIN"){
             const token = response.data.token
-              console.log(response.data.data)
+              console.log(response.data.token)
             //   const userId = response.data.data._id
               let role = "admin"
 

@@ -15,6 +15,7 @@ import { ViewAlumnis } from './components/ViewAlumnis';
 import { ViewEmployers } from './components/ViewEmployers';
 import { AlumniPasswordUpdate } from './components/AlumniPasswordUpdate';
 import { AlumniResponseForm } from './components/AlumniResponseForm';
+import { EmployPasswordUpdate } from './components/EmployPasswordUpdate';
 
 
 
@@ -39,6 +40,8 @@ function App() {
         <Route path="/viewemployer" exact element={<ViewEmployers/>}/>
         <Route path="/alumnipasswordupdate" exact element={<AlumniPasswordUpdate/>}/>
         <Route path="/alumniresponseform" exact element={<AlumniResponseForm/>}/>
+        <Route path="/employpasswordupdate" exact element={<EmployPasswordUpdate/>}/>
+
        </Routes>
       </BrowserRouter>
     </div>

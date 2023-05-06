@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Header } from './Header'
 
 export const ViewEmployers = () => {
   const apiUrl = "http://localhost:1000/api/viewemployee"
@@ -55,6 +56,7 @@ const setUser=(id,company,email,website,address,district,state,description,perso
 
   return (
     <div>
+      <Header/>
       <table class="table table-striped table-hover table-bordered border-secondary">
   <thead>
     <tr>
