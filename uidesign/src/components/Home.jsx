@@ -147,7 +147,7 @@ console.log(role)
           </div> */}
           </div>
           </section>
-          <Footer />
+          {/* <Footer /> */}
 
 </div>
 
