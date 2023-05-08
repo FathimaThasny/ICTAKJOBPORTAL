@@ -8,6 +8,7 @@ import { Footer } from './Footer'
 export const AlumniResponseForm = () => {
 
   const apiUrl = "http://localhost:1000/api/alumniresponseform"
+  const navigate = useNavigate()
     
   
   const [input,setInput]=useState({})
@@ -20,8 +21,8 @@ export const AlumniResponseForm = () => {
   }  
   const buttonClickEvent = () => {
     const formData = new FormData();
-    formData.append('first_name', input.first_name);
-    formData.append('last_name', input.last_name);
+    formData.append('name', input.name);
+    // formData.append('last_name', input.last_name);
     formData.append('email', input.email);
     formData.append('phone', input.phone);
     formData.append('course', input.course);
@@ -35,35 +36,37 @@ export const AlumniResponseForm = () => {
     }).then((response) => {
       console.log(response.data);
       alert('Form submitted successfully');
+      navigate('/')
     }).catch((error) => {
       console.error(error);
       alert('An error occurred while submitting the form');
     });
   };
-  const styles = {
+  // const styles = {
   
-    width : '1000px',
-    padding : '0px 0px 0px 300px'
-  };
-  const hstyles = {
+  //   width : '1000px',
+  //   padding : '0px 0px 0px 300px'
+  // };
+  // const hstyles = {
   
 
-    padding : '100px 0px 0px 0px'
-  };
+  //   padding : '100px 0px 0px 0px'
+  // };
 
   
   return (
     <div>
       <Header/>
-        <h1 style={hstyles}>Alumni Response Form</h1>
+        {/* <h1 style={hstyles}>Alumni Response Form</h1> */}
         
-      <div style={styles}>
-   <form action="">    
+      <div className='container justify-content-center' >
+        <div className="row justify-content-center ">
+        <form className="form justify-content-center m-5 p-5">
    
-    <div class="input-group mb-3">
-      <span class="input-group-text">First and last name</span>
-      <input name='first_name' type="text" aria-label="First name" class="form-control" onChange={changeMyData}/>
-      <input name='last_name' type="text" aria-label="Last name" class="form-control" onChange={changeMyData}/>
+    <div class=" mb-3">
+      <label class="form-label ">Name</label>
+      <input name='name' type="text" aria-label="Name" class="form-control" onChange={changeMyData}/>
+      {/* <input name='last_name' type="text" aria-label="Last name" class="form-control" onChange={changeMyData}/> */}
     </div>
 <div class="mb-3">
   <label for="exampleFormControlInput1" class="form-label">Email_id</label>
@@ -83,20 +86,20 @@ export const AlumniResponseForm = () => {
   <label for="exampleFormControlTextarea1" class="form-label">SKILLS</label>
   <textarea name='skill' class="form-control" id="exampleFormControlTextarea1" rows="3" onChange={changeMyData}></textarea>
 </div>
-<div>
-      <p>Please Upload your Resume</p><input  type="file" onChange={(e) => setPdfFile(e.target.files[0])} accept="application/pdf" />
+<div className='d-flex'>
+      <p>Please Upload your Resume  : </p><input className='ms-3' type="file" onChange={(e) => setPdfFile(e.target.files[0])} accept="application/pdf" />
     
   </div>
 
 
-
+{/* 
 <div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">SKILLS</label>
+  <label for="exampleFormControlTextarea1" class="form-label">Additional Data</label>
   <textarea name='skill' class="form-control" id="exampleFormControlTextarea1" rows="3" onChange={changeMyData}></textarea>
-</div>
-<button type="submit" class="btn btn-primary" onClick={buttonClickEvent}>Submit</button>
+</div> */}
+<button type="submit" class="btn btn-primary mt-4" onClick={buttonClickEvent}>Submit</button>
 </form> 
-
+</div>
 
     </div>
 <Footer/>

@@ -84,27 +84,40 @@ export const PendingAlumni = () => {
   return (
 <div>
   <Header/>
-        <div className="card">
-  <div className="card-header">
-Pending Requests  </div>
+        <div className="container mt-5 pt-5">
+  <h5 className="card-header">
+Pending Requests  </h5>
+<table className="table fleft table-hover table-bordered border-secondary">
+  <thead>
+    <tr className='bg-warning'>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Course</th>
+      <th scope="col">Batch</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+
+    </tr>
+  </thead>
+  <tbody>
     {data.map(
         (user)=>{
-            return  <ul className='list-group list-group-flush'>
-            <div className="card-body" key={user._id} style={{borderBottom:"1px"}}>
-            <h5 className="card-title">{user.name}</h5>
-            {/* <p className="card-text">{user.description}</p> */}
-          </div>
-          <p className="card-text">Mail : {user.email}</p>
-          <p className="card-text">Course : {user.course}</p>
-            <p className="card-text"><b>Batch : {user.batch}</b></p>
-            {/* <p className="card-text">Designation : {user.designation}</p> */}
-            {/* <p className="card-text "><a href={user.website} className="card-text">{user.website}</a></p> */}
-          <div className="card-body">
-          <button className="btn btn-success" onClick={()=>verifyData(user._id,user.name,user.email,user.phone,user.qualification,user.course,user.batch,user.placementStatus,user.company)}>Verify</button>
-          <button className="btn btn-danger" value={user._id} onClick={deleteData}>Reject</button>
-          </div>
-          </ul>
-          })}
+            return  <tr key={user._id}>
+            <td>{user.name}</td>
+            <td>{user.email}</td>
+            <td>{user.course}</td>
+            <td>{user.batch}</td>
+            <td className='table-borderless'>
+          <button className="btn btn-success" onClick={()=>verifyData(user._id,user.name,user.email,user.phone,user.qualification,user.course,user.batch,user.placementStatus,user.company)} ><i class="bi bi-check-lg"></i></button>
+          </td>
+          <td>
+          <button className="btn btn-danger" value={user._id} onClick={deleteData}><i class="bi bi-trash-fill"></i></button>
+          </td>
+          </tr>
+    }
+    )}
+  </tbody>
+</table>
           </div>
               </div>
   )

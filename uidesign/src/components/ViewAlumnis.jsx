@@ -39,7 +39,7 @@ export const ViewAlumnis = () => {
     )      
 }
 
-const setUser=(id,name,email,phone,qualification,course,batch,placementStatus,company)=>{
+const setUser=(id,name,email,phone,qualification,course,batch,placementStatus)=>{
     localStorage.setItem("_id",id);
     localStorage.setItem("name",name);
     localStorage.setItem("email",email);
@@ -48,16 +48,18 @@ const setUser=(id,name,email,phone,qualification,course,batch,placementStatus,co
     localStorage.setItem("course",course);
     localStorage.setItem("batch",batch);
     localStorage.setItem("placementStatus",placementStatus);
-    localStorage.setItem("CompanyName",company);
+    // localStorage.setItem("CompanyName",company);
   }
 
 
   return (
     <div>
       <Header/>
-      <table className="table table-striped table-hover table-bordered border-secondary">
+      <div className="container mt-5">
+      <div className="row mt-5 pt-5">
+      <table className="table fleft table-hover table-bordered border-secondary">
   <thead>
-    <tr>
+    <tr className='bg-warning'>
       <th scope="col">Sl No.</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
@@ -78,16 +80,18 @@ const setUser=(id,name,email,phone,qualification,course,batch,placementStatus,co
         <td>{user.course}</td>
         <td>{user.batch}</td>
         <td className='table-borderless'>
-        <Link className="btn btn-warning" to={'/update'} onClick={()=>setUser(user._id,user.name,user.email,user.phone,user.qualification,user.course,user.batch,user.placementStatus,user.company)} >Edit</Link>
+        <Link className="btn " to={'/editalumni'} onClick={()=>setUser(user._id,user.name,user.email,user.phone,user.qualification,user.course,user.batch,user.placementStatus)} ><i class="bi bi-pencil-fill"></i></Link>
         </td>  
         <td>                
-        <button className="btn btn-danger mx-3" value={user._id} onClick={clickDelete}>Delete</button>
+        <button className="btn mx-3" value={user._id} onClick={clickDelete}><i class="bi bi-trash-fill"/></button>
         </td>
       </tr>
     }
     )}
   </tbody>
 </table>
+</div>
+</div>
     </div>
   )
 }

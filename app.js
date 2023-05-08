@@ -54,16 +54,35 @@ app.post('/api/viewemployee', async(req,res)=>{
 
 })
 
+//---------view Single employee---------
+app.post('/api/viewaemployer', async(req,res)=>{
+
+    let data = await employeeModel.findById(req.body)
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+            res.json(data)
+
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
+
+})
+
 
 //---------edit employee----------
 app.post('/api/editemployee', async(req,res)=>{
 
-    let data = await employeeModel.findOneAndUpdate({"_id":req.body._id},req.body)
+    let data = await employeeModel.findOneAndUpdate(req.body)
     jwt.verify(req.body.token,"ictakjob",
     (error,decoded)=>{
         if(decoded && decoded.email) {
            
             res.json({status : 'Data Updated'})
+            // console.log(data)
 
         }
         else{
@@ -227,7 +246,7 @@ app.post('/api/employlogin',async(req,res)=>{
                     res.json({status:"Token not generated"})
                 }
                 else{
-                     res.json({status : 'Login Successful as ADMIN',token:token})
+                     res.json({status : 'Login Successful as ADMIN',token:token,mail:mail})
                      console.log(token)
             console.log("inside admin")
                 }
@@ -306,10 +325,18 @@ app.post('/api/viewalljobs', async(req,res)=>{
     res.json(data)
 })
 
+//--------getting single job post-----------
+app.post('/api/viewsinglejob', async(req,res)=>{
+    let data=await jobModel.findOne(req.body)
+    res.json(data)
+})
+
 
 //----------------------delete a job-------------
 app.post('/api/deletejob', async (req,response)=>{
-    let data=await jobModel.findByIdAndDelete
+    let data=await jobModel.findByIdAndDelete(req.body)
+    console.log(data)
+    console.log("entering delete")
     jwt.verify(req.body.token,"ictakjob",
     (error,decoded)=>{
         if(decoded && decoded.email) {
@@ -321,6 +348,16 @@ app.post('/api/deletejob', async (req,response)=>{
         }
     }
     )
+})
+
+//--------------search a job-----------
+app.post('/api/searchjobfield', async(req,res)=>{
+    // const filters = req.body;
+    console.log(req.body)
+    let data = await jobModel.find(req.body)
+    console.log(data)
+//   const filteredUsers = data.filter(user => user.field === req.body )
+  res.send(data);
 })
 
 
@@ -362,6 +399,13 @@ app.post('/api/employupdatepassword', async(req,res)=>{
 
 })
 
+//------------employers job post--------
+app.post('/api/employersjobs', async(req,res)=>{
+    let email = req.body
+    console.log(email)
+    let data = await jobModel.find(email)
+    res.json(data)
+})
 
 
 //============================ALUMINI SIDE CODE=================================================================================
@@ -413,6 +457,25 @@ app.post('/api/deletealumni', async(req,res)=>{
     )
 })
 
+//----------edit alumni--------
+app.post('/api/editalumni', async(req,res)=>{
+    console.log(req.body)
+    let data = await alumniAddModel.findOneAndUpdate(req.body)
+    jwt.verify(req.body.token,"ictakjob",
+    (error,decoded)=>{
+        if(decoded && decoded.email) {
+
+            res.json({status : 'Data Updated'})
+            console.log(data)
+
+        }
+        else{
+            res.json({status : "Unauthorized User"})
+        }
+    }
+    )
+
+})
 // <<<<<<< HEAD
 //--------------selecting one alumni----------
 app.post('/api/selectAlumni',async(req,res)=>{

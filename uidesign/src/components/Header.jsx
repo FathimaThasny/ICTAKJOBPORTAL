@@ -24,6 +24,7 @@ export const Header = () => {
         else{
             setVisible(false)
         }
+        
       if((usertoken) && ((role == 'employer') || (role === 'admin')))
       {
         setView(true)
@@ -31,7 +32,7 @@ export const Header = () => {
       else{
         setView(false)
         }
-        if((usertoken) && ((role === 'employer') || (role === 'alumni')))
+        if((usertoken) && (role === 'employer'))
       {
         setViewprofile(true)
       }
@@ -55,15 +56,21 @@ export const Header = () => {
 
   },[])
 
-  const apiURL="http://localhost:3000/api/getemployerdetails"
-    const clickEdit = () =>{
-        axios.get(apiURL)
-        .then(response =>{
-            console.log(response)
+  // const apiURL="http://localhost:3000/api/getemployerdetails"
+  //   const clickEdit = () =>{
+  //     const 
+  //       axios.get(apiURL)
+  //       .then(response =>{
+  //           console.log(response)
        
             
-        })
-    }
+  //       })
+  //   }
+
+  const logout = ()=> {
+       sessionStorage.removeItem("usertoken")
+       sessionStorage.removeItem("role")
+    };
 
   return (
     <div className='md-3'>
@@ -77,9 +84,14 @@ export const Header = () => {
       </button>
       <div className="collapse navbar-collapse"  id="navbarToggleExternalContent">
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0 ">
+          {!view &&
           <li className="nav-item p-2">
             <a className="nav-link active text-white" aria-current="page" href="/">Home</a>
-          </li>
+          </li>}
+          {viewoption &&
+          <li className="nav-item p-2">
+            <a className="nav-link active text-white" aria-current="page" href="/adminhome">Home</a>
+          </li>}
           {visible &&
           <li className="nav-item p-2">
             <a className="nav-link active text-white" aria-current="page" href="/">Applied Jobs</a>
@@ -91,26 +103,37 @@ export const Header = () => {
           </li>}
           {view &&
           <li className="nav-item p-2">
-            <a className="nav-link text-white" href="/alumnilogin">Posted Jobs</a>
+            <a className="nav-link text-white" href="/postedjobs">Posted Jobs</a>
           </li>}
-          {view &&
+          {/* {view &&
           <li className="nav-item p-2">
             <a className="nav-link text-white" href="/">Notification</a>
-          </li>}
-          {viewprofile &&
-           <div class="btn-group">
-           <button class="btn btn-secondary ms-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          </li>} */}
+          {visible &&
+           <div className="btn-group">
+           <button className="btn btn-secondary ms-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
            <img id="profile" alt='' src={profileicon}/>
            </button>
          
-           <ul class="dropdown-menu dropdown-menu-end bg-dark">
-           <li><a className="dropdown-item" onClick={clickEdit} href="Editprofile">Edit Profile</a></li>
-          <li><a className="dropdown-item" href="/">Log out</a></li>
+           <ul className="dropdown-menu dropdown-menu-end bg-light">
+           <li><a className="dropdown-item"  href="/alumnipasswordupdate">Update Password</a></li>
+          <li><a className="dropdown-item" onClick={logout} href="/">Log out</a></li>
+           </ul>
+         </div>}
+         {viewprofile &&
+           <div className="btn-group">
+           <button className="btn btn-secondary ms-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <img id="profile" alt='' src={profileicon}/>
+           </button>
+         
+           <ul className="dropdown-menu dropdown-menu-end bg-light">
+           <li><a className="dropdown-item"  href="/employpasswordupdate">Update Password</a></li>
+          <li><a className="dropdown-item" onClick={logout} href="/">Log out</a></li>
            </ul>
          </div>}
           {viewoption &&
           <li className="nav-item p-2">
-            <a className="nav-link text-white" href="/postnewjob">Logout</a>
+            <a className="nav-link text-white" onClick={logout} href="/employlogin">Logout</a>
           </li>}
           {option &&
           <li className="nav-item p-2">

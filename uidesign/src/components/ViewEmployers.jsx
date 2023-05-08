@@ -15,15 +15,18 @@ export const ViewEmployers = () => {
     axios.post(apiUrl,{"token": usertoken}).then(
       (response) =>{
         console.log(response)
+        console.log(response.data)
         setData(response.data)
+        console.log(data)
     }
     )
   },[]
   )
 
-  const clickDelete = (event) =>{
+  const clickDelete = (key) =>{
+    console.log(key)
     const element = {
-        "_id" : event.target.value,
+        "_id" : key,
         "token": usertoken
     }
     console.log(element)
@@ -56,10 +59,13 @@ const setUser=(id,company,email,website,address,district,state,description,perso
 
   return (
     <div>
-      <Header/>
+            <Header/>
+
+      <div className="container mt-5">
+      <div className="row mt-5 pt-5">
       <table class="table table-striped table-hover table-bordered border-secondary">
   <thead>
-    <tr>
+    <tr className='bg-warning'>
       <th scope="col">Sl No.</th>
       <th scope="col">Name</th>
       <th scope="col">Company</th>
@@ -80,16 +86,18 @@ const setUser=(id,company,email,website,address,district,state,description,perso
         <td>{user.website}</td>
         <td>{user.description}</td>
         <td className='table-borderless'>
-        <Link className="btn btn-warning" to={'/editprofile'} onClick={()=>setUser(user._id,user.company,user.companyemail,user.website,user.address,user.district,user.state,user.description,user.personname,user.personalmail,user.designation,user.personalnumber)} >Edit</Link>
+        <Link className="btn" to={'/editprofile'} onClick={()=>setUser(user._id,user.company,user.companyemail,user.website,user.address,user.district,user.state,user.description,user.personname,user.personalmail,user.designation,user.personalnumber)} ><i class="bi bi-pencil-fill"></i></Link>
         </td>  
         <td>                
-        <button className="btn btn-danger mx-3" value={user._id} onClick={clickDelete}>Delete</button>
+        <button className="btn  mx-3" value={user._id} onClick={()=>clickDelete(user._id)}><i class="bi bi-trash-fill"></i></button>
         </td>
       </tr>
     }
     )}
   </tbody>
 </table>
+</div>
+</div>
     </div>
   )
 }

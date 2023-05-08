@@ -25,9 +25,9 @@ const alumniSchema = new mongoose.Schema({
     placementStatus:{
         type:String
     },
-    CompanyName :{
-        type:String
-    },
+    // CompanyName :{
+    //     type:String
+    // },
     password :{
         type: String
     },

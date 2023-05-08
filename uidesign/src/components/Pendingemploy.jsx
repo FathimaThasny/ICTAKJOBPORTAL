@@ -89,28 +89,42 @@ export const Pendingemploy = () => {
   return (
     <div>
       <Header/>
-        <div className="card">
-  <div className="card-header">
-Pending Requests  </div>
+      <div className="container mt-5 pt-5">
+  <h5 className="card-header">
+Pending Requests  </h5>
+<table class="table table-striped table-hover table-bordered border-secondary">
+  <thead>
+    <tr className='bg-warning'>
+      <th scope="col">Name</th>
+      <th scope="col">Company</th>
+      <th scope="col">Designation</th>
+      <th scope="col">Website</th>
+      <th scope="col">Description</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+
+    </tr>
+  </thead>
+  <tbody>
     {data.map(
         (user)=>{
-            return  <ul className='list-group list-group-flush' key={user._id}>
-            <div className="card-body"  style={{borderBottom:"1px"}}>
-            <h5 className="card-title">{user.company}</h5>
-            <p className="card-text">{user.description}</p>
-          </div>
-          <p className="card-text">Mail : {user.personalmail}</p>
-          <p className="card-text">Address : {user.address}</p>
-            <p className="card-text"><b>Employer Name : {user.personname}</b></p>
-            <p className="card-text">Designation : {user.designation}</p>
-            <p className="card-text "><a href={user.website} className="card-text">{user.website}</a></p>
-          <div className="card-body">
-          <button className="btn btn-success" onClick={()=>verifyData(user._id,user.company,user.companyemail,user.website,user.address,user.district,user.state,user.description,user.personname,user.personalmail,user.designation,user.personalnumber)}>Verify</button>
-          <button className="btn btn-danger" value={user._id} onClick={deleteData}>Reject</button>
-          </div>
-          </ul>
-
-  })}
+            return  <tr key={user._id}>
+            <td>{user.personname}</td>
+            <td>{user.company}</td>
+            <td>{user.designation}</td>
+            <td><a href={user.website}>{user.website}</a></td>
+            <td>{user.description}</td>
+            <td className='table-borderless'>
+          <button className="btn btn-success" onClick={()=>verifyData(user._id,user.company,user.companyemail,user.website,user.address,user.district,user.state,user.description,user.personname,user.personalmail,user.designation,user.personalnumber)}><i class="bi bi-check-lg"></i></button>
+          </td>
+          <td>
+          <button className="btn btn-danger" value={user._id} onClick={deleteData}><i class="bi bi-trash-fill"></i></button>
+          </td>
+          </tr>
+    }
+    )}
+  </tbody>
+</table>
 </div>
     </div>
   )

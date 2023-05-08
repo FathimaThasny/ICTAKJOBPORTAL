@@ -28,6 +28,7 @@ export const LoginEmployer = () => {
               const token = response.data.token
               console.log(response.data.data)
               const userId = response.data.data._id
+              console.log(userId)
               let role = "employer"
 
               console.log(role)
@@ -41,14 +42,15 @@ export const LoginEmployer = () => {
           }else if(response.data.status === "Login Successful as ADMIN"){
             const token = response.data.token
               console.log(response.data.token)
-            //   const userId = response.data.data._id
+              const mail = response.data.mail
               let role = "admin"
 
               console.log(role)
 
               sessionStorage.setItem("userToken",token)
-            //   sessionStorage.setItem("userId",userId)
+              sessionStorage.setItem("mail",mail)
               sessionStorage.setItem("role",role)
+            //   sessionStorage.setItem("mail",response.data.personalemail)
             console.log("admin")
             navigate("/adminhome")
             
@@ -65,7 +67,8 @@ export const LoginEmployer = () => {
     <div>
     <Header/>
     <br /> <br />
-    <section className='login-page pt-5'>
+    <div className="container my-0 justify-content-center" style={{marginLeft: "25em"}}>
+    <section className='login-page pt-5 '>
       <div className="container align-items-center">
             <div className="col-md-6 pt-5">
                 <div className="card border-0 rounded-3 w-75 h-25 shadow mx-auto" style={{position : "relative"}}>
@@ -101,6 +104,7 @@ export const LoginEmployer = () => {
             </div>
         </div>
     </section>
+    </div>
     </div>
   )
 }

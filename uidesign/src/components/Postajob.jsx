@@ -67,10 +67,10 @@ export const Postajob = () => {
                 <div className="dropdown col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Job Type</label>
                     <select className="form-control" onChange={changeMyData} name='jobtype'>
-                    <option class="dropdown-item" >Select..</option>
-                        <option className="dropdown-item" value="Full-time">Full-time</option>
-                        <option className="dropdown-item" value="Part-time">Part-time</option>
-                        <option className="dropdown-item" value="Internship">Internship</option>
+                    <option class="dropdown-item text-dark" >Select..</option>
+                        <option className="dropdown-item text-dark" value="Full-time">Full-time</option>
+                        <option className="dropdown-item text-dark" value="Part-time">Part-time</option>
+                        <option className="dropdown-item text-dark " value="Internship">Internship</option>
                     </select>
                 </div>
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
@@ -90,9 +90,17 @@ export const Postajob = () => {
                           }}
                         />
                     </form> */}
+                    <select className="form-control text-dark" onChange={changeMyData} name='field'>
+                    <option class="dropdown-item text-dark" >Select..</option>
+                        <option className="dropdown-item text-dark" value="IT">IT Jobs</option>
+                        <option className="dropdown-item text-dark" value="ML&AI">Machine Learning & Robotics</option>
+                        <option className="dropdown-item text-dark" value="Designer">Designer Jobs</option>
+                        <option className="dropdown-item text-dark" value="Business Administration">Business Administration</option>
+                        <option className="dropdown-item text-dark" value="Marketing">Marketing</option>
+                        <option className="dropdown-item text-dark" value="others">Others</option>
+                    </select>
                     
-                    
-                    <input type="text" onChange={changeMyData} name="field" className="form-control" />
+                    {/* <input type="text" onChange={changeMyData} name="field" className="form-control" /> */}
                 </div>
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
                     <label htmlFor="" className="form-label">Company Email</label>

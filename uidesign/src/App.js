@@ -16,6 +16,9 @@ import { ViewEmployers } from './components/ViewEmployers';
 import { AlumniPasswordUpdate } from './components/AlumniPasswordUpdate';
 import { AlumniResponseForm } from './components/AlumniResponseForm';
 import { EmployPasswordUpdate } from './components/EmployPasswordUpdate';
+import { SearchHome } from './components/SearchHome';
+import { IndividualJob } from './components/IndividualJob';
+import { Postedjobs } from './components/Postedjobs';
 
 
 
@@ -34,13 +37,16 @@ function App() {
         <Route path='/alumniregister' exact element={ <AlumniRegister/> } />
         <Route path='/pendingalumni' exact element={ <PendingAlumni/> } />
         <Route path="/alumnilogin" exact element={<AlumniLogin/>}/>
-        <Route path="/alumniprofile" exact element={<AlumniProfile/>}/>
+        <Route path="/editalumni" exact element={<AlumniProfile/>}/>
         <Route path="/editprofile" exact element={<Editprofile/>}/>
         <Route path="/viewalumni" exact element={<ViewAlumnis/>}/>
         <Route path="/viewemployer" exact element={<ViewEmployers/>}/>
         <Route path="/alumnipasswordupdate" exact element={<AlumniPasswordUpdate/>}/>
         <Route path="/alumniresponseform" exact element={<AlumniResponseForm/>}/>
         <Route path="/employpasswordupdate" exact element={<EmployPasswordUpdate/>}/>
+        <Route path="/homesearch" exact element={<SearchHome/>}/>
+        <Route path="/" exact element={<IndividualJob/>}/>
+        <Route path="/postedjobs" exact element={<Postedjobs/>}/>
 
        </Routes>
       </BrowserRouter>

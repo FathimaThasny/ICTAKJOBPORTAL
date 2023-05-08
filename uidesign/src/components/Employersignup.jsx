@@ -32,9 +32,9 @@ export const Employersignup = () => {
   return (
     <div>
         <Header/>
-        <div className="container">
-        <form className="form p-5">
-        <div className="row g-3">
+        <div className="container d-flex ">
+        <form className="form justify-content-center m-5 p-5">
+        <div className="row  g-3">
                 
                 <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-2">
 
