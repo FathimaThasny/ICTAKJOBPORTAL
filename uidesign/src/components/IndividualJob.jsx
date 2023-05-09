@@ -49,11 +49,11 @@ export const IndividualJob = () => {
 
 
   return (
-    <div>
-          <section className="row listContainer d-flex flex-column fleft ms-3   ps-3" >
-        <div className="row list ms-5 ">
-        <article className='col jobTuple border-0 bg-light m-3 p-3' key={data._id} style={{height : "auto",borderRadius:"7px"}}>
-            <article className="jobhead bg-light border-0 rounded-5 shadow m-0 p-3 w-100 sticky" style={{height:"190px"}}>
+    <div className='row ps-0 mt-3' style={{width:"100em"}}>
+          <section className="row listContainer d-flex flex-column fleft " >
+        <div className="row list ms-5 mt-3 ">
+        <article className='col jobTuple border-0 shadow bg-light p-2' key={data._id} style={{height : "auto",width:"63vh",borderRadius:"7px"}}>
+            <article className="jobhead bg-white border-0 rounded-5  m-0 p-3 w-100 sticky" style={{height:"190px"}}>
               <div className="jobTupleHeader d-flex flex-column">
                 <div className="info fleft ">
                   <h4 className="title ellipsis fleft">{data.titleofrole}</h4>
@@ -71,7 +71,7 @@ export const IndividualJob = () => {
                 </article>
                 
                 <hr />
-            <section className="jobhead   d-flex  flex-column d-block p-3 w-100 h-50" >
+            <section className="jobhead bg-white  d-flex  flex-column d-block p-3 w-100 h-50" >
                 <h5 className='fleft'>Job Details</h5>
                 <div className="ellipsis description d-flex fleft mt-2 mb-2">
                 <i className="bi bi-briefcase pe-2"></i><b>

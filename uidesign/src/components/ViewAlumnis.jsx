@@ -39,12 +39,12 @@ export const ViewAlumnis = () => {
     )      
 }
 
-const setUser=(id,name,email,phone,qualification,course,batch,placementStatus)=>{
+const setUser=(id,name,email,phone,highestQualification,course,batch,placementStatus)=>{
     localStorage.setItem("_id",id);
     localStorage.setItem("name",name);
     localStorage.setItem("email",email);
     localStorage.setItem("phone",phone);
-    localStorage.setItem("highestQualification",qualification);
+    localStorage.setItem("highestQualification",highestQualification);
     localStorage.setItem("course",course);
     localStorage.setItem("batch",batch);
     localStorage.setItem("placementStatus",placementStatus);
@@ -80,10 +80,10 @@ const setUser=(id,name,email,phone,qualification,course,batch,placementStatus)=>
         <td>{user.course}</td>
         <td>{user.batch}</td>
         <td className='table-borderless'>
-        <Link className="btn " to={'/editalumni'} onClick={()=>setUser(user._id,user.name,user.email,user.phone,user.qualification,user.course,user.batch,user.placementStatus)} ><i class="bi bi-pencil-fill"></i></Link>
+        <Link className="btn " to={'/editalumni'} onClick={()=>setUser(user._id,user.name,user.email,user.phone,user.highestQualification,user.course,user.batch,user.placementStatus)} ><i className="bi bi-pencil-fill"></i></Link>
         </td>  
         <td>                
-        <button className="btn mx-3" value={user._id} onClick={clickDelete}><i class="bi bi-trash-fill"/></button>
+        <button className="btn mx-3" value={user._id} onClick={clickDelete}><i className="bi bi-trash-fill"/></button>
         </td>
       </tr>
     }

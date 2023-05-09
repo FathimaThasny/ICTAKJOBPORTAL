@@ -26,13 +26,15 @@ app.listen(1000,()=>{
 //===========================================================ADMIN SIDE CODES==============================================================
 
 
-//---------add employee----------
+//---------add employee----------(modify)
 app.post('/api/addemployee', async(req,res)=>{
-
+    if(employeeModel.findOne(req.body.personalmail)){
+        res.json({status : "User Already Exists! Please LogIn"})
+    }else{
     let data = new employeeModel(req.body)
     data.save()
     res.json({status : "Registration Successfull. Please wait for the Conformation From Admin"})
-
+    }
 })
 
 
@@ -74,15 +76,16 @@ app.post('/api/viewaemployer', async(req,res)=>{
 
 
 //---------edit employee----------
-app.post('/api/editemployee', async(req,res)=>{
+app.post('/api/editemployee', async (req,res)=>{
+    console.log(req.body._id)
+    let data = await employeeModel.findOneAndUpdate({"_id":req.body._id},req.body)
+    console.log(data)
 
-    let data = await employeeModel.findOneAndUpdate(req.body)
     jwt.verify(req.body.token,"ictakjob",
     (error,decoded)=>{
         if(decoded && decoded.email) {
-           
+
             res.json({status : 'Data Updated'})
-            // console.log(data)
 
         }
         else{
@@ -246,7 +249,7 @@ app.post('/api/employlogin',async(req,res)=>{
                     res.json({status:"Token not generated"})
                 }
                 else{
-                     res.json({status : 'Login Successful as ADMIN',token:token,mail:mail})
+                     res.json({status : 'Login Successful as ADMIN',token:token,data:mail})
                      console.log(token)
             console.log("inside admin")
                 }
@@ -305,8 +308,7 @@ app.post('/api/newjobpost',async(req,res)=>{
     console.log(data)
     jwt.verify(req.body.token,"ictakjob",
     (error,decoded)=>{
-        if(decoded && decoded.email) {
-           
+        if(decoded && decoded.email) {   
             data.save()
             res.json({status:"Success"})
         }
@@ -339,8 +341,7 @@ app.post('/api/deletejob', async (req,response)=>{
     console.log("entering delete")
     jwt.verify(req.body.token,"ictakjob",
     (error,decoded)=>{
-        if(decoded && decoded.email) {
-           
+        if(decoded && decoded.email) {   
             response.json({status:"Job Deleted"})
         }
         else{
@@ -381,7 +382,6 @@ app.post('/api/updatejob',async (req,res)=>{
 app.post('/api/employupdatepassword', async(req,res)=>{
     console.log("inside password Update")
     console.log(req.body)
-
     let data=await employeeModel.findOneAndUpdate({"id":req.body._id}, req.body)
     jwt.verify(req.body.token,"ictakjob",
     (error,decoded)=>{
@@ -399,23 +399,29 @@ app.post('/api/employupdatepassword', async(req,res)=>{
 
 })
 
-//------------employers job post--------
+//------------employers job post--------)(modify)
 app.post('/api/employersjobs', async(req,res)=>{
-    let email = req.body
-    console.log(email)
-    let data = await jobModel.find(email)
+    let usermail = req.body
+    console.log(usermail)
+    let data = await jobModel.find(usermail)
+    console.log(data)
     res.json(data)
 })
 
 
 //============================ALUMINI SIDE CODE=================================================================================
-//  Register Alumni
+//  Register Alumni----(modify)
 app.post('/api/alumniregister',async(req,res)=>{
+    if(alumniAddModel.findOne(req.body.email)){
+        res.json({msg : 'User Already Exists. Please Login'})
+    }
+    else{
     let data =await new alumniAddModel(req.body)
     data.save()
-    res.json({status : 'One Data Saved'})
+    res.json({msg : 'Registration Successfull. Please wait for the Conformation From Admin'})
     console.log(data)
     console.log("Alumni registration Success")
+    }
 })
 
 

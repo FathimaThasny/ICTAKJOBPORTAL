@@ -24,7 +24,7 @@ export const Adminhome = () => {
     <div>
       <Header/>
       <div className='container'>
-        <div className="row justify-content-center m-0 w-75 h-75 g-5">
+        <div className="row justify-content-center align-items-center ms-5 ps-5 w-75 h-75 g-5">
           <div className="col col-md-5">
             <div className="card d-flex flex-column" style={{width: "50%"}}>
               <div className="card-body">

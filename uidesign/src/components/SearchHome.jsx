@@ -63,14 +63,14 @@ console.log(role)
         </div>
         </div>
         
-        <div className="row  d-flex flex-row justify-content-center position-relative ">
-          <div className="col">
+        <div className="container-fluid  d-flex flex-row  position-relative "  >
+          <div className="col fleft">
           
       <section className="row listContainer d-flex flex-column fleft ms-3 pt-3 ps-3">
         <div className="row list ms-5 ">
       {data.map(
           (user)=>{
-            return <article className='col jobTuple bg-light border-0 rounded-5 shadow align-items-center m-3 p-3' key={user._id} style={{width:"100%", height:"50%"}} onClick={()=>searchJob(user._id)}>
+            return <article className='col jobTuple bg-light border-0 rounded-5 bg-white shadow align-items-center m-3 p-3 overflow-auto' key={user._id} style={{width:"80vh", height:"230px"}} onClick={()=>searchJob(user._id)}>
               <div className="jobTupleHeader">
                 <div className="info fleft ">
                   <h4 className="title ellipsis">{user.titleofrole}</h4>
@@ -112,12 +112,10 @@ console.log(role)
 
           </div>
           </section>
-          <div className="ms-5 ps-5">
           {visible&&
-          <section className='w-100 ms-5'>
+          <section className='d-flex m-0 '>
 <IndividualJob/>
           </section>}
-          </div>
           </div>
           {/* <Footer /> */}
           </div>

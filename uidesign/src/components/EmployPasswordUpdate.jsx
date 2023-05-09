@@ -57,6 +57,8 @@ export const EmployPasswordUpdate = () => {
      
   
    <button type="submit" className="btn btn-primary mt-3" onClick={clickUpdate}>Submit</button>
+   <button className='btn btn-primary mt-3 ms-3'> <a className='text-light text-decoration-none' href="/postajob">Cancel</a></button>
+
  </div>
  </div>
         </div>

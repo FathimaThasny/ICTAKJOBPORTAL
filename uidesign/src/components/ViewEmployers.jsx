@@ -15,9 +15,14 @@ export const ViewEmployers = () => {
     axios.post(apiUrl,{"token": usertoken}).then(
       (response) =>{
         console.log(response)
+        console.log("response data")
         console.log(response.data)
-        setData(response.data)
+        // setData(response.data)
+        const data = response.data
+        setData(data)
+        console.log("data")
         console.log(data)
+        
     }
     )
   },[]

@@ -50,30 +50,31 @@ console.log(role)
     console.log(postid)
     const jobid = postid
     console.log("jobid")
-    const input = {
-      "_id" : jobid
-  }
-  console.log(input)
+  //   const input = {
+  //     "_id" : jobid
+  // }
+  // console.log(input)
+  setVisible(true)
 
-  axios.post(apiUrl,input)
-  .then((response)=>{
-      console.log("inside search")
-      console.log(response.data)
-      const item= new Array(response.data)
+
+  // axios.post(apiUrl,input)
+  // .then((response)=>{
+  //     console.log("inside search")
+  //     console.log(response.data)
+  //     const item= response.data
       // setItem(response.data)
-      console.log("item")
-      console.log(item)
+      // console.log("item")
+      // console.log(item.titleofrole)
       // window.location.replace(data)
 
-  })
+  // })
 
-    // localStorage.setItem("id",jobid)
-    setVisible(true)
+    localStorage.setItem("id",jobid)
     // <IndividualJob/>
   }
 
   return (
-    <div className='container mt-5 pt-5 '>
+    <div className='container justify-content-center mt-5 pt-5 ms-5 me-0' style={{width:"100em",marginRight:"0"}}>
         <Header />
         <div className="row align-items-center justify-content-center d-flex m-5">
         <div className="bd-search col col-6 col-sm-6   d-flex">
@@ -109,14 +110,14 @@ console.log(role)
     </ul>
         </section>
         </div>
-        <div className="row  d-flex flex-row  position-relative ">
+        <div className="container-fluid  d-flex flex-row  position-relative " style={{width: "1200px"}}>
           <div className="col-6 fleft">
           
       <section className="row listContainer d-flex flex-column fleft ms-3 pt-3 ps-3">
         <div className="row list ms-5 ">
       {data.map(
           (user)=>{
-            return <article className='col jobTuple bg-light border-0 rounded-5 shadow align-items-center m-3 p-3' key={user._id} style={{width:"100%", height:"250px"}} onClick={()=>searchJob(user._id)}>
+            return <article className='col jobTuple bg-light border-0 rounded-5 bg-white shadow align-items-center m-3 p-3 overflow-auto' key={user._id} style={{width:"90%", height:"230px"}} onClick={()=>searchJob(user._id)}>
               <div className="jobTupleHeader">
                 <div className="info fleft ">
                   <h4 className="title ellipsis">{user.titleofrole}</h4>
@@ -159,69 +160,69 @@ console.log(role)
           </div>
           <div className="vr h-100"></div>
           </section>{visible&&
-          <section className="row listContainer d-flex flex-column fleft ms-3   ps-3" >
-          <div className="row list ms-5 ">
-          <article className='col jobTuple border-0 bg-light m-3 p-3' key={item._id} style={{height : "auto",borderRadius:"7px"}}>
-              <article className="jobhead bg-light border-0 rounded-5 shadow m-0 p-3 w-100 sticky" style={{height:"190px"}}>
-                <div className="jobTupleHeader d-flex flex-column">
-                  <div className="info fleft ">
-                    <h4 className="title ellipsis fleft">{item.titleofrole}</h4>
-                    <div className="companyInfo subheading mt-5">
-                      <p className="subTitle ellipsis fleft mb-0"><b>{item.company}</b></p> <br />
-                      <p className="ellipsis fleft mt-2 mb-0">{item.place}</p>
+          // <section className="row listContainer d-flex flex-column fleft ms-3   ps-3" >
+          // <div className="row list ms-5 ">
+          // <article className='col jobTuple border-0 bg-light m-3 p-3' key={item._id} style={{height : "auto",borderRadius:"7px"}}>
+          //     <article className="jobhead bg-light border-0 rounded-5 shadow m-0 p-3 w-100 sticky" style={{height:"190px"}}>
+          //       <div className="jobTupleHeader d-flex flex-column">
+          //         <div className="info fleft ">
+          //           <h4 className="title ellipsis fleft">{item.titleofrole}</h4>
+          //           <div className="companyInfo subheading mt-5">
+          //             <p className="subTitle ellipsis fleft mb-0"><b>{item.company}</b></p> <br />
+          //             <p className="ellipsis fleft mt-2 mb-0">{item.place}</p>
   
-                    </div>
-                    <div className="jobFooter mt-3 py-3 mb-2">
-                    {/* <div className="fleft mt-2 pt-3">{data.createdAt}</div> */}
-                    <button className='btn btn-primary fleft mt-3 align-items-center' onClick={clickApply}>Apply</button>
-                  </div>
-                  </div>
-                  </div>
-                  </article>
+          //           </div>
+          //           <div className="jobFooter mt-3 py-3 mb-2">
+          //           {/* <div className="fleft mt-2 pt-3">{data.createdAt}</div> */}
+          //           <button className='btn btn-primary fleft mt-3 align-items-center' onClick={clickApply}>Apply</button>
+          //         </div>
+          //         </div>
+          //         </div>
+          //         </article>
                   
-                  <hr />
-              <section className="jobhead   d-flex  flex-column d-block p-3 w-100 h-50" >
-                  <h5 className='fleft'>Job Details</h5>
-                  <div className="ellipsis description d-flex fleft mt-2 mb-2">
-                  <i className="bi bi-briefcase pe-2"></i><b>
-                  Job Type  :</b> 
-                  <br />
-                  <div className="ms-3 fleft d-flex">
-                  <div className="border-0  fleft">{item.jobtype}</div>
-                  </div>
-                  </div>
-                  <div className="ellipsis description d-flex fleft mt-2 mb-2">
-                  <i className="bi bi-briefcase pe-2"></i><b>
-                  Experience  :</b> 
-                  <br />
-                  <div className="ms-3 fleft d-flex">
-                  <div className="border-0  fleft">{item.experience}</div>
-                  </div>
-                  </div>
-                  <hr />
-                  <div className="ellipsis description d-flex fleft mt-2 mb-2">
-                  <i className="bi bi-card-text pe-2"></i>
-                  {item.description}
-                  </div>
-                  <div className="ellipsis description d-flex fleft mt-2 mb-2">
-                  <i className="bi bi-currency-rupee pe-2"></i><b>
-                  salary  :</b> 
-                  <br />
-                  <div className="ms-3 fleft d-flex">
-                  <div className="border-0  fleft">{item.salary}</div>
-                  </div>
-                  </div>
+          //         <hr />
+          //     <section className="jobhead   d-flex  flex-column d-block p-3 w-100 h-50" >
+          //         <h5 className='fleft'>Job Details</h5>
+          //         <div className="ellipsis description d-flex fleft mt-2 mb-2">
+          //         <i className="bi bi-briefcase pe-2"></i><b>
+          //         Job Type  :</b> 
+          //         <br />
+          //         <div className="ms-3 fleft d-flex">
+          //         <div className="border-0  fleft">{item.jobtype}</div>
+          //         </div>
+          //         </div>
+          //         <div className="ellipsis description d-flex fleft mt-2 mb-2">
+          //         <i className="bi bi-briefcase pe-2"></i><b>
+          //         Experience  :</b> 
+          //         <br />
+          //         <div className="ms-3 fleft d-flex">
+          //         <div className="border-0  fleft">{item.experience}</div>
+          //         </div>
+          //         </div>
+          //         <hr />
+          //         <div className="ellipsis description d-flex fleft mt-2 mb-2">
+          //         <i className="bi bi-card-text pe-2"></i>
+          //         {item.description}
+          //         </div>
+          //         <div className="ellipsis description d-flex fleft mt-2 mb-2">
+          //         <i className="bi bi-currency-rupee pe-2"></i><b>
+          //         salary  :</b> 
+          //         <br />
+          //         <div className="ms-3 fleft d-flex">
+          //         <div className="border-0  fleft">{item.salary}</div>
+          //         </div>
+          //         </div>
                   
-                  </section>
+          //         </section>
                   
                 
-              </article>
+          //     </article>
             
-            </div>
-            </section>
-//           <section>
-// <IndividualJob/>
-//           </section>
+          //   </div>
+          //   </section>
+          <section className='d-flex m-0'>
+<IndividualJob/>
+          </section>
 }
           </div>
           {/* <Footer /> */}

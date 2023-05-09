@@ -25,7 +25,7 @@ export const Employersignup = () => {
         .then(response =>{
             console.log(response)
             alert(response.data.status)
-            navigate('/employlogin')
+            navigate("/employlogin",{replace: true})
         })
     }
 

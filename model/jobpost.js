@@ -26,21 +26,24 @@ const jobSchema  =new Mongoose.Schema(
             required: true
         },
         experience:{
-            type:String,
-            required:true
+            type:String
+            // required:true
         },
         salary:{
-            type:Number,
-            required:true
+            type:Number
+            // required:true
         },
         description:{
-            type:String,
-            required:true
+            type:String
+            // required:true
         },
-        userId:{
-            type : Mongoose.Schema.ObjectId, 
-            ref : 'employeerecords'
+        usermail:{
+            type:String
         },
+        // userId:{
+        //     type : Mongoose.Schema.pers, 
+        //     ref : 'employeerecords'
+        // },
         createdAt : {type: Date, default: Date.now}
 
     }

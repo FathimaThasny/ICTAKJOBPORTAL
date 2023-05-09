@@ -36,7 +36,7 @@ export const AlumniResponseForm = () => {
     }).then((response) => {
       console.log(response.data);
       alert('Form submitted successfully');
-      navigate('/')
+      window.location.replace('/')
     }).catch((error) => {
       console.error(error);
       alert('An error occurred while submitting the form');
@@ -98,6 +98,8 @@ export const AlumniResponseForm = () => {
   <textarea name='skill' class="form-control" id="exampleFormControlTextarea1" rows="3" onChange={changeMyData}></textarea>
 </div> */}
 <button type="submit" class="btn btn-primary mt-4" onClick={buttonClickEvent}>Submit</button>
+<button className='btn btn-primary mt-4 ms-5'> <a className='text-light text-decoration-none' href="/">Cancel</a></button>
+
 </form> 
 </div>
 

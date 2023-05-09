@@ -1,12 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import{ Header} from './Header';
 import axios from 'axios';
-import { LoginEmployer } from './LoginEmployer';
-// import TimeAgo from 'javascript-time-ago'
-// import ReactTimeAgo from 'react-time-ago'
-// import en from 'javascript-time-ago/locale/en.json'
 import { useNavigate } from 'react-router-dom';
-// TimeAgo.addDefaultLocale(en)
 
 export const Postedjobs = (props) => {
   let role = sessionStorage.getItem("role")
@@ -41,18 +36,23 @@ export const Postedjobs = (props) => {
      
     }
   }, []);
-  const deleteData = (event)=>{
-    console.log(event.target.value)
+  const clickDelete = (key) =>{
+    console.log(key)
     const element = {
-      "_id" : event.target.value,
-      "token": usertoken
+        "_id" : key,
+        "token": usertoken
     }
+    console.log(element)
+    console.log("element del")
   console.log(element)
    axios.post(deleteApi,element)
    .then(response=>{
           console.log(response)
           if(response.data.status=== 'Job Deleted'){
               window.location.reload(true)
+          }
+          else{
+            alert("Error")
           }
       }
   )     
@@ -62,11 +62,11 @@ export const Postedjobs = (props) => {
   return ( <div className='container mt-5 pt-5'>
   <Header />
   
-<section className="row listContainer fleft mx-5 p-5">
+<section className="row listContainer justify-content-center fleft w-100  p-5" style={{marginLeft:"20%"}}>
   <div className="row list ">
 {data.map(
     (user)=>{
-      return <article className='col jobTuple bg-light border-0 rounded-5 w-100 shadow mt-3 mx-3 pt-3 px-3 mb-0 pb-0' key={user._id} style={{height:"64%"}}>
+      return <article className='col jobTuple bg-light border-0 overflow-auto rounded-5 w-50 shadow mt-3 mx-3 pt-3 px-3 mb-0 pb-0' key={user._id} style={{height:"250px"}}>
         <div className="jobTupleHeader">
           <div className="info fleft ">
             <h4 className="title ellipsis">{user.titleofrole}</h4>
@@ -101,7 +101,7 @@ export const Postedjobs = (props) => {
             {/* <div>
 Posted  <ReactTimeAgo date={user.createdAt} locale="en-US"/>
 </div> */}
-            <button className='btn btn-danger flex-center mt-2 align-items-center' value={user._id} onClick={deleteData}><i class="bi bi-trash-fill"></i></button>
+            <button className='btn btn-danger flex-center mt-2 align-items-center' value={user._id} onClick={()=>clickDelete(user._id)}><i class="bi bi-trash-fill"></i></button>
           </div>
         
       </article>

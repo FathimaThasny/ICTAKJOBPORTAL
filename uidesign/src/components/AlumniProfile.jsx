@@ -45,7 +45,7 @@ export const AlumniProfile = () => {
           "name" : name,
           "email" : email,
           "phone" :phone,
-          "highestQualification ": highestQualification,
+          "highestQualification":highestQualification,
           "course":course,
           "batch":batch,
           "placementStatus":placementStatus,
@@ -54,12 +54,13 @@ export const AlumniProfile = () => {
       
           "token": usertoken
       }
+      console.log(employeeData)
       axios.post(apiUrl,employeeData)
       .then(response =>{
           console.log(response)
           if(response.data.status==="Data Updated")
           {
-            navigate('/adminhome')
+            window.location.replace('/adminhome')
           }
       })
   }
@@ -90,7 +91,7 @@ export const AlumniProfile = () => {
             </div>
             <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-3">
                 <label htmlFor="" className="form-label">Email</label>
-                <input name='email' type="email" value={email} className="form-control" onChange={(e)=> setEmail(e.target.value)}/>
+                <input name='email' type="email" value={email} className="form-control" readOnly />
             </div>
             <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-3">
                 <label htmlFor="" className="form-label">Phone_No</label>

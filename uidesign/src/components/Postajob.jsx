@@ -8,7 +8,7 @@ import { Footer } from './Footer'
 export const Postajob = () => {
 
     const [input,setinput]=useState({})
-    const [userid,setuserid] = useState(sessionStorage.getItem("userId"))
+    const [usermail,setuserid] = useState(sessionStorage.getItem("mail"))
     const [usertoken,settoken] = useState(sessionStorage.getItem("userToken"))
 
     const navigate = useNavigate()
@@ -16,7 +16,7 @@ export const Postajob = () => {
     const changeMyData=(e)=>{
       setinput({
          ...input,[e.target.name]:e.target.value,
-         "userId": userid,
+         "usermail": usermail,
         "token": usertoken
       })
     }
@@ -49,7 +49,7 @@ export const Postajob = () => {
             <Header/>
         
         <div className="container">
-        <form className="form p-5">
+        <form className="form  p-5" style={{marginLeft:"25%"}}>
         <div className="row g-3">
                 
                 <div className="col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6 mb-3">

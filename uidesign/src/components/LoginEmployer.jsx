@@ -27,14 +27,14 @@ export const LoginEmployer = () => {
           if(response.data.msg === "login successful"){
               const token = response.data.token
               console.log(response.data.data)
-              const userId = response.data.data._id
-              console.log(userId)
+              const usermail = response.data.data._id
+              console.log(usermail)
               let role = "employer"
 
               console.log(role)
 
               sessionStorage.setItem("userToken",token)
-              sessionStorage.setItem("userId",userId)
+              sessionStorage.setItem("mail",usermail)
               sessionStorage.setItem("role",role)
               console.log("employe")
               navigate("/postnewjob")
@@ -44,7 +44,7 @@ export const LoginEmployer = () => {
               console.log(response.data.token)
               const mail = response.data.mail
               let role = "admin"
-
+              
               console.log(role)
 
               sessionStorage.setItem("userToken",token)

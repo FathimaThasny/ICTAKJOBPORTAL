@@ -44,24 +44,24 @@ export const AlumniPasswordUpdate = () => {
   return (
     <div>
       <Header/>
-        <h1>AlumniPasswordUpdate</h1>
-
-
-<div className='col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12'>
+      <div className='container'>
+        <div className='row g-5 align-items-center justify-content-sm-center'>
+            <div className="card border-0 rounded-3" style={{width:"100%",height:"15em"}}>
+        <div className='col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 g-5 mt-4'>
       
-     <div className="form-control mb-3">
-       <label for="exampleInputEmail1" className="form-label">New Password</label>
-       <input type="password" className="form-control" name='password' onChange={changeMyData}/>
-   
-     </div>
-  <div className="form-control mb-3">
-    <label for="exampleInputEmail1" className="form-label">Confirm Password</label>
-    <input type="password" className="form-control" name='confirmpassword' onChange={changeMyData}/>
+        <label  className="form-label">New Password</label>
+        <input type="password" className="form-control" name='password' onChange={changeMyData}/>
     
-  </div>
- 
-  <button type="submit" className="btn btn-primary" onClick={clickUpdate}>Submit</button>
-</div>
+     <label  className="form-label">Confirm Password</label>
+     <input type="password" className="form-control" name='confirmpassword' onChange={changeMyData}/>
+     
+  
+   <button type="submit" className="btn btn-primary mt-3" onClick={clickUpdate}>Submit</button>
+   <button className='btn btn-primary mt-3 ms-3'> <a className='text-light text-decoration-none' href="/">Cancel</a></button>
+ </div>
+ </div>
+        </div>
+        </div>
 
 
 

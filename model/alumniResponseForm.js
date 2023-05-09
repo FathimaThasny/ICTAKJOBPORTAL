@@ -18,9 +18,8 @@ const alumniResponseSchema = new mongoose.Schema({
     },
     skill: {
         type: String
-    },
-    jobpostid: String
-});
+    }
+    });
 const alumniResponseModel = mongoose.model(
     "alumniResponseModel", alumniResponseSchema
 )
