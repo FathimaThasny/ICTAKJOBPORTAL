@@ -6,7 +6,7 @@ const alumniSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        unique: true
+        // unique: true
     },
     phone: {
         type: Number

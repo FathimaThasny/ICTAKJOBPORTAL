@@ -30,18 +30,6 @@ export const Editprofile = () => {
     const [personalnumber,setPersonalnumber] = useState('')
     const [_id,setId] = useState(null)
 
-    const [companyv,changeCompany] = useState('')
-    const [companyemailv,changeEmail] = useState('')
-    const [websitev,changeWebsite] = useState('')
-    const [addressv,changeAddress] = useState('')
-    const [districtv,changeDistrict] = useState('')
-    const [statev,changeState] = useState('')
-    const [descriptionv,changeDiscription] = useState('')
-    const [personnamev,changePersonname] = useState('')
-    const [personalmailv,changePersonalmail] = useState('')
-    const [designationv,changeDesignation] = useState('')
-    const [personalnumberv,changePersonalnumber] = useState('')
-    // const [uid,changeId] = useState(null)
 
     const apiUrl ="http://localhost:1000/api/editemployee"
     // const apiURL2 = "http://localhost:1000/api/viewaemployer"

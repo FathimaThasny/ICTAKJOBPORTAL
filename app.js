@@ -28,13 +28,11 @@ app.listen(1000,()=>{
 
 //---------add employee----------(modify)
 app.post('/api/addemployee', async(req,res)=>{
-    if(employeeModel.findOne(req.body.personalmail)){
-        res.json({status : "User Already Exists! Please LogIn"})
-    }else{
+    
     let data = new employeeModel(req.body)
     data.save()
     res.json({status : "Registration Successfull. Please wait for the Conformation From Admin"})
-    }
+    
 })
 
 
@@ -412,16 +410,13 @@ app.post('/api/employersjobs', async(req,res)=>{
 //============================ALUMINI SIDE CODE=================================================================================
 //  Register Alumni----(modify)
 app.post('/api/alumniregister',async(req,res)=>{
-    if(alumniAddModel.findOne(req.body.email)){
-        res.json({msg : 'User Already Exists. Please Login'})
-    }
-    else{
+    
     let data =await new alumniAddModel(req.body)
     data.save()
     res.json({msg : 'Registration Successfull. Please wait for the Conformation From Admin'})
     console.log(data)
     console.log("Alumni registration Success")
-    }
+    
 })
 
 

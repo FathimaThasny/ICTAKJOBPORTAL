@@ -92,10 +92,6 @@ export const Header = () => {
           <li className="nav-item p-2">
             <a className="nav-link active text-white" aria-current="page" href="/adminhome">Home</a>
           </li>}
-          {visible &&
-          <li className="nav-item p-2">
-            <a className="nav-link active text-white" aria-current="page" href="/">Applied Jobs</a>
-          </li>}
           
           {view &&
           <li className="nav-item p-2">
